@@ -17,8 +17,8 @@
 			<?php echo h($comunicacione['Comunicacione']['asunto']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Fecha'); ?></dt>
-		<dd>
+		<dt><?php echo __('Fecha'); //hay que modificacar el formato de fecha?></dt>
+		<dd> 
 			<?php echo h($comunicacione['Comunicacione']['fecha']); ?>
 			&nbsp;
 		</dd>
