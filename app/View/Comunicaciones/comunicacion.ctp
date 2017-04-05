@@ -65,7 +65,7 @@ if($copia>1){
 //};
 //$fec = $fecha[date('%Y')];//<?php echo h($comunicacione['Comunicacione']['asunto']); 
 $html = <<<EOD
-<table><tr><td><img src="../webroot/img/UNERG.jpg" width="120px" align="left"></td><td><p align="center" style="font-size:8px; text-align:center;">
+<table><tr><td><img src="../webroot/img/UNERG.jpg" width="180px" height="80px" align="left"></td><td><p align="center" style="font-size:10px; text-align:center;">
 Republica Bolivariana de Venezuela<br>
 UNIVERSIDAD NACIONAL EXPERIMENTAL <br>
 "ROMULO GALLEGOS"<br> 
