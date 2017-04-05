@@ -6,7 +6,7 @@
 			<th><?php echo $this->Paginator->sort('id'); ?></th>
 			<th><?php echo $this->Paginator->sort('nombres'); ?></th>
 			<th><?php echo $this->Paginator->sort('apellidos'); ?></th>
-			<th><?php echo $this->Paginator->sort('c.i'); ?></th>
+			<th><?php echo $this->Paginator->sort('cedula'); ?></th>
 			<th><?php echo $this->Paginator->sort('resolucion'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
@@ -17,7 +17,7 @@
 		<td><?php echo h($directivo['Directivo']['id']); ?>&nbsp;</td>
 		<td><?php echo h($directivo['Directivo']['nombres']); ?>&nbsp;</td>
 		<td><?php echo h($directivo['Directivo']['apellidos']); ?>&nbsp;</td>
-		<td><?php echo h($directivo['Directivo']['c.i']); ?>&nbsp;</td>
+		<td><?php echo h($directivo['Directivo']['cedula']); ?>&nbsp;</td>
 		<td><?php echo h($directivo['Directivo']['resolucion']); ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $directivo['Directivo']['id'])); ?>

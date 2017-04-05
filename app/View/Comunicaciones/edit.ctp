@@ -7,7 +7,7 @@
 		echo $this->Form->input('dependencia_id');
 		echo $this->Form->input('directivo_id');
 		echo $this->Form->input('asunto');
-		echo $this->Form->input('fecha');
+		echo $this->Form->input('fecha', array('dateFormat'=>'DMY'));
 		echo $this->Form->input('cuerpo');
 		echo $this->Form->input('numero_comuni');
 		echo $this->Form->input('copia_a');

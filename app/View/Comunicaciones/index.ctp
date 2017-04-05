@@ -5,12 +5,12 @@
 	<tr>
 			<th><?php echo $this->Paginator->sort('id'); ?></th>
 			<th><?php echo $this->Paginator->sort('dependencia_id'); ?></th>
-			<th><?php echo $this->Paginator->sort('directivo_id'); ?></th>
+			<th><?php //echo $this->Paginator->sort('directivo_id'); ?></th>
 			<th><?php echo $this->Paginator->sort('asunto'); ?></th>
 			<th><?php echo $this->Paginator->sort('fecha'); ?></th>
-			<th><?php echo $this->Paginator->sort('cuerpo'); ?></th>
+			<th><?php //echo $this->Paginator->sort('cuerpo'); ?></th>
 			<th><?php echo $this->Paginator->sort('numero_comuni'); ?></th>
-			<th><?php echo $this->Paginator->sort('copia_a'); ?></th>
+			<th><?php //echo $this->Paginator->sort('copia_a'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
 	</thead>
@@ -22,10 +22,10 @@
 			<?php echo $this->Html->link($comunicacione['Dependencia']['nombre'], array('controller' => 'dependencias', 'action' => 'view', $comunicacione['Dependencia']['id'])); ?>
 		</td>
 		<td>
-			<?php echo $this->Html->link($comunicacione['Directivo']['director'], array('controller' => 'directivos', 'action' => 'view', $comunicacione['Directivo']['id'])); ?>
+			<?php //echo $this->Html->link($comunicacione['Directivo']['director'], array('controller' => 'directivos', 'action' => 'view', $comunicacione['Directivo']['id'])); ?>
 		</td>
 		<td><?php echo h($comunicacione['Comunicacione']['asunto']); ?>&nbsp;</td>
-		<td><?php echo h($comunicacione['Comunicacione']['fecha']); ?>&nbsp;</td>
+		<td><?php echo date("d-m-Y", strtotime(h($comunicacione['Comunicacione']['fecha']))); ?>&nbsp;</td>
 		<td><?php //echo h($comunicacione['Comunicacione']['cuerpo']); ?>&nbsp;</td>
 		<td><?php echo h($comunicacione['Comunicacione']['numero_comuni']); ?>&nbsp;</td>
 		<td><?php //echo h($comunicacione['Comunicacione']['copia_a']); ?>&nbsp;</td>

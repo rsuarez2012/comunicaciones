@@ -20,7 +20,7 @@ $tcpdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
 $tcpdf->setHeaderMargin(2);
 $tcpdf->getAliasNumPage();
 $tcpdf->AddPage();
-$tcpdf->SetFont('helvetica', '', 14); 
+$tcpdf->SetFont('helvetica', '', 12); 
 
 //$meses = array('01' => 'Enero', '02' => 'Febrero', '03' => 'Marzo', '04' => 'Abril', '05' => 'Mayo', '06' => 'Junio', '07' => 'Julio', '08' => 'Agosto', '09' => 'Septiembre', '10' => 'Octubre', '11' => 'Noviembre', '12' => 'Diciembre');
 //$grados = array(1 => 'Primer', 2 => 'Segundo', 3 => 'Tercer', 4 => 'Cuarto', 5 => 'Quinto', 6 => 'Sexto');
@@ -50,49 +50,75 @@ $grado = $grados[$alumno['Inscripcion'][0]['Curso']['Grado']['nombre']];*/
 $periodo = strtoupper($post['Comunicacione']['asunto']);
 $para = $post['Dependencia']['nombre'];
 $de = "DIRECCION DE SEGURIDAD SOCIAL UNERG";
-$fecha = $post['Comunicacione']['fecha'];
+$fecha = date("d-m-Y", strtotime($post['Comunicacione']['fecha']));
+$cuerpo = $post['Comunicacione']['cuerpo'];
+$nume = $post['Comunicacione']['numero_comuni'];
+$director = $post['Directivo']['director'];
+$ce_dire = $post['Directivo']['cedula'];
+$resolucion = $post['Directivo']['resolucion'];
+$copia = $post['Comunicacione']['copia_a'];
+if($copia>1){
+   echo "Hola";
+};
+//if($copia==true){
+//    echo "Hola";
+//};
 //$fec = $fecha[date('%Y')];//<?php echo h($comunicacione['Comunicacione']['asunto']); 
 $html = <<<EOD
-<table border="1">
-    <tr>
-        <th>PARA: $para</th>
-    </tr>
-    <tr>
-        <th>DE: $de</th>
-    </tr>
-    <tr>
-        <th>ASUNTO: $periodo</th>
-    </tr>
-    <tr>
-        <th>FECHA: $fecha</th>
-    </tr>
-</table>
-<table tyle="margin:0 auto; width: 100%;">
-<tr>
-   <td width="25%"></td>
-    <th style="text-align: center; font-size: 9pt; font-weight: bold;">
-        REPÚBLICA BOLIVARIANA DE VENEZUELA<br />
-        U.E.C colegio_nombre<br />
-        SAN JUAN DE LOS MORROS<br />
-        ESTADO GUARICO
-    </th>
-</tr>
-</table>
-<table><tr><th></th></tr><tr><th></th></tr><tr><th></th></tr></table>
-<h3 style="text-align: center; ">CONSTANCIA DE ESTUDIOS</h3>
-<br/>
-<table><tr><th></th></tr></table>
-<p style="text-align: justify;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Quien suscribe, Prof. directora cargo portadora de la cedula de identidad N° cedu,  de la U.E.C "colegio_nombre", hace constar a través de la presente que el (la) alumno(a): alumno_info estudia en esta institución cursando el (grado) grado, del año escolar periodo <br><br>
-<table><tr><th></th></tr></table>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Constancia que se pide a petición de la parte interesada en la ciudad de san juan de los morros, a los dias dias del mes de mes del año: año </p><br><br><br><br> 
-<table><tr><th></th></tr><tr><th></th></tr><tr><th></th></tr></table>
-<table><tr><th></th></tr><tr><th></th></tr><tr><th></th></tr></table> 
-<table>
-<tr style="text-align: center;">
-    <th>__________________________<br/>Profe. directora <br/>DIRECTORA</th>
-</tr>
-</table>
+<table><tr><td><img src="../webroot/img/UNERG.jpg" width="120px" align="left"></td><td><p align="center" style="font-size:8px; text-align:center;">
+Republica Bolivariana de Venezuela<br>
+UNIVERSIDAD NACIONAL EXPERIMENTAL <br>
+"ROMULO GALLEGOS"<br> 
+Direccion de Seguridad Social<br>
+Estado Guarico</p></td></tr></table>
 
+<br>
+<br>
+<table border="">
+    <tr>
+        <th><b>VRAD-. &nbsp;000$nume</b></th>
+    </tr>
+    <tr>
+        <th><b>PARA:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$para</b></th>
+    </tr>
+    <tr>
+        <th><b>DE:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$de</b></th>
+    </tr>
+    <tr>
+        <th><b>ASUNTO: &nbsp;$periodo</b></th>
+    </tr>
+    <tr>
+        <th><b>FECHA: &nbsp;&nbsp;&nbsp;&nbsp;$fecha</b></th>
+    </tr>
+</table>
+<br>
+<br>
+<br>
+<br>
+    &nbsp;$cuerpo
+
+<br>
+<br>
+<p style="font-size:12px;">              Sin mas que hacer referencia y agradeciendo de antemano receptividad ante esta solicitud.</p>
+<br>
+<br>
+<br>
+<br>
+<table>
+<tr style="text-align: center;"><th>Atentamente</th></tr>
+<tr><td></td></tr>
+<tr><td></td></tr>
+<tr><td></td></tr>
+<tr style="text-align: center;">
+    <th>__________________________<br/>$director <br/>DIRECTOR DE SEGURIDAD SOCIAL UNERG<br>C.I: $ce_dire<br>RESOLUCION N° $resolucion</th>
+</tr>
+</table>
+<br>
+<br>
+<br>
+<p align="left" style="font-size:10px;">C.C: $copia  
+<?php 
+</p>
 EOD;
  $tcpdf->writeHTML($html, true, false, true, false, '');
  

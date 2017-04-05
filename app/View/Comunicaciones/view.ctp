@@ -19,7 +19,7 @@
 		</dd>
 		<dt><?php echo __('Fecha'); //hay que modificacar el formato de fecha?></dt>
 		<dd> 
-			<?php echo h($comunicacione['Comunicacione']['fecha']); ?>
+			<?php echo date("d-m-Y", strtotime(h($comunicacione['Comunicacione']['fecha']))); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Cuerpo'); ?></dt>

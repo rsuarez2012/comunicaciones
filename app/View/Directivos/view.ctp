@@ -16,9 +16,9 @@
 			<?php echo h($directivo['Directivo']['apellidos']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('C.i'); ?></dt>
+		<dt><?php echo __('Cedula'); ?></dt>
 		<dd>
-			<?php echo h($directivo['Directivo']['c.i']); ?>
+			<?php echo h($directivo['Directivo']['cedula']); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Resolucion'); ?></dt>
