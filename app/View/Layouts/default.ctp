@@ -14,7 +14,7 @@
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
 
-$cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework');
+$cakeDescription = __d('cake_dev', 'Sistema de Gestion y Seguimiento de DISEO-UNERG');
 $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 ?>
 <!DOCTYPE html>
@@ -34,11 +34,37 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 		echo $this->fetch('css');
 		echo $this->fetch('script');
 	?>
+	<style type="text/css">
+		ul{
+			list-style: none; 
+			margin: 0; 
+			padding: 0;
+			
+
+		}
+		ul li{
+			display: inline-block;
+
+		}
+		ul li a{
+			text-decoration: none;
+		}
+	</style>
 </head>
 <body>
 	<div id="container">
 		<div id="header">
-			<h1><?php echo $this->Html->link($cakeDescription, 'http://cakephp.org'); ?></h1>
+			<h1>
+				<?php echo $this->Html->link($cakeDescription, 'http://localhost/comunicaciones/'); ?>
+				
+			</h1>
+			<ul class="nav navbar-nav" style="display: block;">
+		        <li><a href="<?php echo $this->webroot; ?>comunicaciones">Comunicaciones</a></li>
+		        <li><a href="<?php echo $this->webroot; ?>directivos">Directivos</a></li>
+		        <li><a href="<?php echo $this->webroot; ?>dependencias">Dependencias</a></li>
+		        <!--<li><a href="<?php //echo $this->webroot; ?>usuarios">Usuarios</a></li>	
+		        <li><a href="<?php //echo $this->webroot; ?>roles">Roles</a></li>	 -->       
+		      </ul>
 		</div>
 		<div id="content">
 
@@ -49,7 +75,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 		<div id="footer">
 			<?php echo $this->Html->link(
 					$this->Html->image('cake.power.gif', array('alt' => $cakeDescription, 'border' => '0')),
-					'http://www.cakephp.org/',
+					'http://localhost/comunicaciones/',
 					array('target' => '_blank', 'escape' => false, 'id' => 'cake-powered')
 				);
 			?>
