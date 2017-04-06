@@ -13,12 +13,16 @@ $tcpdf->SetTitle("Título");
 $tcpdf->SetSubject("Tutorial TCPDF en cakePHP");
 $tcpdf->SetKeywords("TCPDF, PDF, cakePHP, ejemplo");
 $tcpdf->setPrintHeader(FALSE);
-$tcpdf->setPrintFooter(TRUE);
+$tcpdf->setPrintFooter(FALSE);
 $tcpdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
 $tcpdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
 $tcpdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
-$tcpdf->setHeaderMargin(2);
+$tcpdf->setHeaderMargin(4);
 $tcpdf->getAliasNumPage();
+$tcpdf->SetLeftMargin(25);
+$tcpdf->SetTopMargin(25);
+$tcpdf->SetRightMargin(22);
+$tcpdf->SetAutoPageBreak(TRUE, 50);
 $tcpdf->AddPage();
 $tcpdf->SetFont('helvetica', '', 12); 
 
@@ -76,7 +80,7 @@ Estado Guarico</p></td></tr></table>
 <br>
 <table border="">
     <tr>
-        <th><b>VRAD-. &nbsp;000$nume</b></th>
+        <th><b>40-20-VRAD-DISESO-. &nbsp;000$nume</b></th>
     </tr>
     <tr>
         <th><b>PARA:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$para</b></th>
@@ -95,11 +99,11 @@ Estado Guarico</p></td></tr></table>
 <br>
 <br>
 <br>
-    &nbsp;$cuerpo
+    <p text-align="left" style="text-align:justify;">&nbsp;&nbsp;&nbsp;$cuerpo</p>
 
 <br>
 <br>
-<p style="font-size:12px;">              Sin mas que hacer referencia y agradeciendo de antemano receptividad ante esta solicitud.</p>
+<p style="font-size:12px;">              Esperando su pronta respuesta, se se despide de usted orgulloso de ser Unergista.</p>
 <br>
 <br>
 <br>
