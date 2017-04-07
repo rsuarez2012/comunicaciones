@@ -62,8 +62,8 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 		        <li><a href="<?php echo $this->webroot; ?>comunicaciones">Comunicaciones</a></li>
 		        <li><a href="<?php echo $this->webroot; ?>directivos">Directivos</a></li>
 		        <li><a href="<?php echo $this->webroot; ?>dependencias">Dependencias</a></li>
-		        <!--<li><a href="<?php //echo $this->webroot; ?>usuarios">Usuarios</a></li>	
-		        <li><a href="<?php //echo $this->webroot; ?>roles">Roles</a></li>	 -->       
+		        <li><a href="<?php echo $this->webroot; ?>users/logout">Salir</a></li>	
+		        <!--<li><a href="<?php //echo $this->webroot; ?>roles">Roles</a></li>	 -->       
 		      </ul>
 		</div>
 		<div id="content">
