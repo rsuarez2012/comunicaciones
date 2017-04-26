@@ -12,6 +12,7 @@ class Dependencia extends AppModel {
  * @var array
 
  */
+	public $hasAndBelongsToMany = array('Comunicacione');
 
 	public $displayField = 'nombre';
 	public $validate = array(

@@ -1,11 +1,18 @@
 <div class="comunicaciones view">
-<h2><?php echo __('Comunicacione'); ?></h2>
+<h2><?php echo __('Comunicacione'); //pr($comunicacione);?></h2>
 	<dl>
-		<dt><?php echo __('Id'); ?></dt>
+		<!--<dt><?php //echo __('Id'); ?></dt>
 		<dd>
-			<?php echo h($comunicacione['Comunicacione']['id']); ?>
+			<?php //echo h($comunicacione['Comunicacione']['id']); ?>
+			&nbsp;
+		</dd>-->
+
+		<dt><?php echo __('# Comunicacion'); ?></dt>
+		<dd>
+			<?php echo h($comunicacione['Comunicacione']['numero_comuni']); ?>
 			&nbsp;
 		</dd>
+
 		<dt><?php echo __('Para'); ?></dt>
 		<dd>
 			<?php echo $this->Html->link($comunicacione['Dependencia']['nombre'], array('controller' => 'dependencias', 'action' => 'view', $comunicacione['Dependencia']['id'])); ?>
@@ -27,11 +34,7 @@
 			<?php echo h($comunicacione['Comunicacione']['cuerpo']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('# Comunicacion'); ?></dt>
-		<dd>
-			<?php echo h($comunicacione['Comunicacione']['numero_comuni']); ?>
-			&nbsp;
-		</dd>
+		
 		<dt><?php echo __('Director'); ?></dt>
 		<dd>
 			<?php echo $this->Html->link($comunicacione['Directivo']['director'], array('controller' => 'directivos', 'action' => 'view', $comunicacione['Directivo']['id'])); ?>
@@ -39,7 +42,35 @@
 		</dd>
 		<dt><?php echo __('Copia A'); ?></dt>
 		<dd>
-			<?php echo h($comunicacione['Comunicacione']['copia_a']); ?>
+			<?php //echo h($comunicacione[0]['Comunicacione']['ComunicacionesDependencia']['dependencia_id']); 
+
+				//echo h($copias[1]['Dependencia']['nombre']);?>
+
+
+			<?php //echo pr($copias);?>
+
+
+
+			<?php 
+				/*$i=1;
+				foreach($comunicacione[$id] as $copia){
+					$copia['ComunicacionesDependencia']['dependencia_id'];
+					$i++;
+				};
+				$i=1;
+				foreach($copias as $copia){
+					$copia['Dependencia']['nombre'];
+				$i++;
+				};*/
+				?>
+				<?php 
+					$i=1;
+					foreach($copias as $copia) { ?>
+
+					<?php echo $copia['Dependencia']['nombre'];?><br>
+				<?php $i++;		 }?>
+				
+
 			&nbsp;
 		</dd>
 	</dl>

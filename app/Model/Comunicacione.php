@@ -16,7 +16,7 @@ class Comunicacione extends AppModel {
 	public $validate = array(
 		'dependencia_id' => array(
 			'numeric' => array(
-				'rule' => array('numeric'),
+				'rule' => array('notEmpty'),
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
@@ -74,16 +74,16 @@ class Comunicacione extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'copia_a' => array(
-			'notEmpty' => array(
-				'rule' => array('notEmpty'),
+		//'copia_a' => array(
+			//'notEmpty' => array(
+			//	'rule' => array('notEmpty'),
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
+			//),
+		//),
 	);
 
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
@@ -109,4 +109,10 @@ class Comunicacione extends AppModel {
 			'order' => ''
 		)
 	);
+	public $hasAndBelongsToMany = array(
+		'Dependencia'=> array(
+			'className' => 'Dependencia',
+			'joinTable' => 'comunicaciones_dependencias',
+			'foreignKey' => 'comunicacione_id',
+			'associationForeignKey' => 'dependencia_id'));
 }

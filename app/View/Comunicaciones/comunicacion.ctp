@@ -64,10 +64,9 @@ $copia = $post['Comunicacione']['copia_a'];
 if($copia>1){
    echo "Hola";
 };
-//if($copia==true){
-//    echo "Hola";
-//};
-//$fec = $fecha[date('%Y')];//<?php echo h($comunicacione['Comunicacione']['asunto']); 
+$da=date('g:i  A');
+$di = date('d/m/Y');
+
 $html = <<<EOD
 <table><tr><td><img src="../webroot/img/UNERG.jpg" width="180px" height="80px" align="left"></td><td><p align="center" style="font-size:10px; text-align:center;">
 Republica Bolivariana de Venezuela<br>
@@ -118,20 +117,43 @@ Estado Guarico</p></td></tr></table>
 </tr>
 </table>
 <br>
-<br>
-<br>
-<p align="left" style="font-size:10px;">C.C: $copia  
-<?php 
-</p>
+
+<!--<p align="left" style="font-size:10px;">C.C: </p>
+<p style="font-size:10px;">RQ/ib</p>
+<b style="font-size:10px"></b>-->
+
 EOD;
- $tcpdf->writeHTML($html, true, false, true, false, '');
+$html2 = <<<EOD
+<table>
+<tr><th style="font-size:10px;">C.C.:</th></tr>
+EOD;
+$i = 1;
+foreach ($copias as $po) {
+    # code...
+    $html2=$html2.'
+    <tr>
+        <td style="font-size:10px;">'.$po['Dependencia']['nombre'].'</td>
+    </tr>
+    ';
+    $i++;
+}
+$html2 = $html2.'</table>';
+$html3 =<<<EOD
+<p style="font-size:10px;">RQ/ib</p>
+<b style="font-size:10px">$di - $da</b>
+EOD;
+$tcpdf->writeHTML($html, true, false, true, false, '');
+$tcpdf->writeHTML($html2, true, false, true, false, '');
+$tcpdf->writeHTML($html3, true, false, true, false, '');
+
+
  
  // ---------------------------------------------------------
  
  // Close and output PDF document
  // This method has several options, check the source code 
  //documentation for more information.
- $tcpdf->Output('example_001.pdf', 'I');
+ $tcpdf->Output('comunicacion.pdf', 'I');
  exit;
 
  ?>

@@ -51,11 +51,15 @@ class ComunicacionesController extends AppController {
  * @return void
  */
 	public function view($id = null) {
+		$this->loadModel('ComunicacionesDependencia');
+		$copias = $this->ComunicacionesDependencia->find('all', array('conditions'=>array('ComunicacionesDependencia.comunicacione_id'=>$id), 'recursive'=>1));
 		if (!$this->Comunicacione->exists($id)) {
 			throw new NotFoundException(__('Invalid comunicacione'));
 		}
-		$options = array('conditions' => array('Comunicacione.' . $this->Comunicacione->primaryKey => $id));
+		$options = array('conditions' => array('Comunicacione.' . $this->Comunicacione->primaryKey => $id), 'recursive'=>2);
 		$this->set('comunicacione', $this->Comunicacione->find('first', $options));
+		$this->set('copias', $this->ComunicacionesDependencia->find('all', array('conditions'=>array('ComunicacionesDependencia.comunicacione_id'=>$id), 'recursive'=>1)));
+		
 	}
 
 /**
@@ -64,9 +68,12 @@ class ComunicacionesController extends AppController {
  * @return void
  */
 	public function add() {
+		$ult_comunicacion = $this->Comunicacione->find('first');
+		$this->set('numero_comunicacion', $ult_comunicacion["Comunicacione"]["id"]);
 		if ($this->request->is('post')) {
 			$this->Comunicacione->create();
 			if ($this->Comunicacione->save($this->request->data)) {
+
 				$this->Session->setFlash(__('The comunicacione has been saved.'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
@@ -131,16 +138,18 @@ class ComunicacionesController extends AppController {
 		# code...
 		$this->loadModel('Comunicacione');
 		$this->loadModel('Dependencia');
+		$this->loadModel('ComunicacionesDependencia');
 
 		Configure::write('debug',2);
+		$dependencia = $this->Dependencia->find('first', array('conditions'=>'Dependencia.nombre'));
+
+		$this->set('copias', $this->ComunicacionesDependencia->find('all', array('conditions' => array('ComunicacionesDependencia.comunicacione_id' => $id), 'recursive' => 1)));
+
+
+
 		$this->set('dependencia', $this->Dependencia->find('first', array('recursive' => 1)));
 		$options = array('conditions' => array('Comunicacione.' . $this->Comunicacione->primaryKey => $id));
-		//$this->set('comunicacione', $this->Comunicacione->find('first', $options));
-		//$this->set('comunicacion', $this->Comunicacione->Dependencia->find('first',array('conditions' =>array('Dependencia.id' => $id))));
-		//$dependencias = $this->Comunicacione->Dependencia->find('list');
-		//$this->set(compact('dependencias', 'Comunicaciones'));
-		//$this->set('comunicacion', $this->Comunicacione->find('first',array('conditions'=>array('Comunicacione.id'=>$id), 'recursive'=>3)));
-		//$this->render();
+		
 		$this->set('post', $this->Comunicacione->find('first', array('conditions'=>array('Comunicacione.id'=>$id), 'recursive'=>3)));
 	}
 	public function pdf()

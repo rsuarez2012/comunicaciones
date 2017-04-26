@@ -10,7 +10,9 @@
 		echo $this->Form->input('fecha', array('dateFormat'=>'DMY'));
 		echo $this->Form->input('cuerpo');
 		echo $this->Form->input('numero_comuni');
-		echo $this->Form->input('copia_a');
+		//echo $this->Form->input('copia_a');
+		echo $this->Form->input('Dependencia.Dependencia', array('multiple'=>true));
+
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>
