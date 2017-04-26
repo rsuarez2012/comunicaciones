@@ -15,7 +15,9 @@
  */
 
 $cakeDescription = __d('cake_dev', 'Sistema de Gestion y Seguimiento de DISEO-UNERG');
-$cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
+$cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version());
+$usu = $this->Session->read('User');
+$a=['User'];
 ?>
 <!DOCTYPE html>
 <html>
@@ -62,6 +64,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 		        <li><a href="<?php echo $this->webroot; ?>comunicaciones">Comunicaciones</a></li>
 		        <li><a href="<?php echo $this->webroot; ?>directivos">Directivos</a></li>
 		        <li><a href="<?php echo $this->webroot; ?>dependencias">Dependencias</a></li>
+		        <!--<li><a href="#">Usuario: <?php echo $usu['username'];?></a><li>-->
 		        <li><a href="<?php echo $this->webroot; ?>users/logout">Salir</a></li>	
 		        <!--<li><a href="<?php //echo $this->webroot; ?>roles">Roles</a></li>	 -->       
 		      </ul>
