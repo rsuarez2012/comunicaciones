@@ -9,7 +9,7 @@
 
 		<dt><?php echo __('# Comunicacion'); ?></dt>
 		<dd>
-			<?php echo h($comunicacione['Comunicacione']['numero_comuni']); ?>
+			<?php echo str_pad(h($comunicacione['Comunicacione']['numero_comuni']),3,'0',STR_PAD_LEFT); ?>
 			&nbsp;
 		</dd>
 

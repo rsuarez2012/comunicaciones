@@ -1,5 +1,37 @@
 <div class="comunicaciones index">
 	<h2><?php echo __('Comunicaciones'); ?></h2>
+
+<?php
+/*echo $this->Form->create('Comunicaciones',array('controller' => 'comunicaciones','action' => 'search'));
+echo $this->Form->input('id');
+ echo $this->Form->submit('buscar');
+echo $this->Form->end('');*/
+?> 
+	<?php //echo $this->Form->create('Comunicacione',array('action'=>'search'));?>
+	<fieldset>
+ 		<legend><?php //echo __('Post Search', true);?></legend>
+	<?php
+		//echo $form->input('Search.keywords');
+		//echo $this->Form->input('Search.id');
+		//echo $this->Form->input('Search.asunto',array('after'=>__('wildcard is *',true)));
+		//echo $form->input('Search.body',array('after'=>__('wildcard is *',true)));
+		/*echo $form->input('Search.active',array(
+			'empty'=>__('Any',true),
+			'options'=>array(
+				0=>__('Inactive',true),
+				1=>__('Active',true),
+			),
+		));*/
+		//echo $form->input('Search.created', array('after'=>'eg: >= 2 weeks ago'));
+		//echo $form->input('Search.category_id');
+		//echo $form->input('Search.tag');
+		//echo $form->input('Search.tag_id');
+		//echo $this->Form->submit('Search');
+	?>
+	</fieldset>
+<?php //echo $this->Form->end();?>
+
+
 	<table cellpadding="0" cellspacing="0">
 	<thead>
 	<tr>
@@ -27,7 +59,9 @@
 		<td><?php echo h($comunicacione['Comunicacione']['asunto']); ?>&nbsp;</td>
 		<td><?php echo date("d-m-Y", strtotime(h($comunicacione['Comunicacione']['fecha']))); ?>&nbsp;</td>
 		<td><?php //echo h($comunicacione['Comunicacione']['cuerpo']); ?>&nbsp;</td>
-		<td><?php echo h($comunicacione['Comunicacione']['numero_comuni']); ?>&nbsp;</td>
+
+		<td><b align="center"><?php echo str_pad(h($comunicacione['Comunicacione']['numero_comuni']),3,'0',STR_PAD_LEFT); ?>&nbsp;</b></td>
+
 		<td><?php //echo h($comunicacione['Comunicacione']['copia_a']); ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('Ver'), array('action' => 'view', $comunicacione['Comunicacione']['id'])); ?>
@@ -38,6 +72,7 @@
 <?php endforeach; ?>
 	</tbody>
 	</table>
+	<?php $this->Paginator->options(array('url' => $this->passedArgs)); ?>
 	<p>
 	<?php
 	echo $this->Paginator->counter(array(

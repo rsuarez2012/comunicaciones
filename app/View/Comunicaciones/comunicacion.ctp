@@ -56,7 +56,7 @@ $para = $post['Dependencia']['nombre'];
 $de = "DIRECCION DE SEGURIDAD SOCIAL UNERG";
 $fecha = date("d-m-Y", strtotime($post['Comunicacione']['fecha']));
 $cuerpo = $post['Comunicacione']['cuerpo'];
-$nume = $post['Comunicacione']['numero_comuni'];
+$nume = str_pad($post['Comunicacione']['numero_comuni'],3, '0', STR_PAD_LEFT);
 $director = $post['Directivo']['director'];
 $ce_dire = $post['Directivo']['cedula'];
 $resolucion = $post['Directivo']['resolucion'];
@@ -79,7 +79,7 @@ Estado Guarico</p></td></tr></table>
 <br>
 <table border="">
     <tr>
-        <th><b>40-20-VRAD-DISESO-. &nbsp;000$nume</b></th>
+        <th><b>40-20-VRAD-DISESO-. &nbsp;$nume</b></th>
     </tr>
     <tr>
         <th><b>PARA:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$para</b></th>
@@ -94,7 +94,7 @@ Estado Guarico</p></td></tr></table>
         <th><b>FECHA: &nbsp;&nbsp;&nbsp;&nbsp;$fecha</b></th>
     </tr>
 </table>
-<br>
+
 <br>
 <br>
 <br>

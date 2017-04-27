@@ -5,8 +5,8 @@
 		<legend><?php echo __('Nueva Comunicacion'); ?></legend>
 		<!--<label>Num.:</label>-->
 	<?php 
-		//echo str_pad(($numero_comunicacion + 1),8,'0',STR_PAD_LEFT); 
-		//$num = str_pad(($numero_comunicacion + 1),8,'0',STR_PAD_LEFT);
+		echo str_pad(($numero_comunicacion),3,'0',STR_PAD_LEFT); 
+		//$num = str_pad(($numero_comunicacion + 1),3,'0',STR_PAD_LEFT);
 	?>
 	<?php
 		//$num = str_pad(($numero_comunicacion + 1),8,'0',STR_PAD_LEFT);
