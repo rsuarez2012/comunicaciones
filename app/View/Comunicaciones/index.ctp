@@ -41,9 +41,9 @@ echo $this->Form->end('');*/
 			<th><?php echo $this->Paginator->sort('asunto'); ?></th>
 			<th><?php echo $this->Paginator->sort('fecha'); ?></th>
 			<th><?php //echo $this->Paginator->sort('cuerpo'); ?></th>
-			<th><?php echo $this->Paginator->sort('numero_comuni'); ?></th>
+			<th><?php echo $this->Paginator->sort('comunicacion'); ?></th>
 			<th><?php //echo $this->Paginator->sort('copia_a'); ?></th>
-			<th class="actions"><?php echo __('Actions'); ?></th>
+			<th class="actions"><?php echo __('Acciones'); ?></th>
 	</tr>
 	</thead>
 	<tbody>
@@ -63,11 +63,15 @@ echo $this->Form->end('');*/
 		<td><b align="center"><?php echo str_pad(h($comunicacione['Comunicacione']['numero_comuni']),3,'0',STR_PAD_LEFT); ?>&nbsp;</b></td>
 
 		<td><?php //echo h($comunicacione['Comunicacione']['copia_a']); ?>&nbsp;</td>
+
+
 		<td class="actions">
 			<?php echo $this->Html->link(__('Ver'), array('action' => 'view', $comunicacione['Comunicacione']['id'])); ?>
 			<?php echo $this->Html->link(__('Editar'), array('action' => 'edit', $comunicacione['Comunicacione']['id'])); ?>
-			<?php echo $this->Form->postLink(__('Eliminar'), array('action' => 'delete', $comunicacione['Comunicacione']['id']), array(), __('Are you sure you want to delete # %s?', $comunicacione['Comunicacione']['id'])); ?>
+			<?php echo $this->Form->postLink(__('Eliminar'), array('action' => 'delete', $comunicacione['Comunicacione']['id']), array(), __('Seguro desea Eliminar la Comunicacion #%s?', $comunicacione['Comunicacione']['numero_comuni'])); ?>
 		</td>
+
+
 	</tr>
 <?php endforeach; ?>
 	</tbody>
@@ -76,7 +80,7 @@ echo $this->Form->end('');*/
 	<p>
 	<?php
 	echo $this->Paginator->counter(array(
-	'format' => __('Pagina {:page} de {:pages}, mostrando {:current} registro de {:count} total, starting on record {:start}, ending on {:end}')
+	'format' => __('Pagina {:page} de {:pages}, mostrando {:current} registro de {:count} total, Empezando en el registro {:start}, terminando en el {:end}')
 	));
 	?>	</p>
 	<div class="paging">
@@ -88,9 +92,9 @@ echo $this->Form->end('');*/
 	</div>
 </div>
 <div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
+	<h3><?php echo __('Acciones'); ?></h3>
 	<ul>
-		<li><?php echo $this->Html->link(__('Nueva Comunicacione'), array('action' => 'add')); ?></li>
+		<li><?php echo $this->Html->link(__('Nueva Comunicacion'), array('action' => 'add')); ?></li>
 		<li><?php echo $this->Html->link(__('Lista Dependencias'), array('controller' => 'dependencias', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('Nueva Dependencia'), array('controller' => 'dependencias', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('Lista Directivos'), array('controller' => 'directivos', 'action' => 'index')); ?> </li>

@@ -9,8 +9,12 @@
 
 		<dt><?php echo __('# Comunicacion'); ?></dt>
 		<dd>
-			<?php echo str_pad(h($comunicacione['Comunicacione']['numero_comuni']),3,'0',STR_PAD_LEFT); ?>
-			&nbsp;
+			<?php 
+
+				echo str_pad(h($comunicacione['Comunicacione']['numero_comuni']),3,'0',STR_PAD_LEFT); 
+				
+
+				 ?>
 		</dd>
 
 		<dt><?php echo __('Para'); ?></dt>
@@ -76,16 +80,10 @@
 	</dl>
 </div>
 <div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
+	<h3><?php echo __('Accion'); ?></h3>
 	<ul>
-		<li><?php echo $this->Html->link(__('Imprimir Comunicacion'), array('action' => 'comunicacion', $comunicacione['Comunicacione']['id'])); ?> </li>
-		<li><?php echo $this->Html->link(__('Edit Comunicacione'), array('action' => 'edit', $comunicacione['Comunicacione']['id'])); ?> </li>
-		<li><?php echo $this->Form->postLink(__('Delete Comunicacione'), array('action' => 'delete', $comunicacione['Comunicacione']['id']), array(), __('Are you sure you want to delete # %s?', $comunicacione['Comunicacione']['id'])); ?> </li>
-		<li><?php echo $this->Html->link(__('List Comunicaciones'), array('action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Comunicacione'), array('action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Dependencias'), array('controller' => 'dependencias', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Dependencia'), array('controller' => 'dependencias', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Directivos'), array('controller' => 'directivos', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Directivo'), array('controller' => 'directivos', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Imprimir'), array('action' => 'comunicacion', $comunicacione['Comunicacione']['id'])); ?> </li><br>
+		<li><?php echo $this->Html->link(__('Editar'), array('action' => 'edit', $comunicacione['Comunicacione']['id'])); ?> </li><br>
+		<li><?php echo $this->Form->postLink(__('Eliminar'), array('action' => 'delete', $comunicacione['Comunicacione']['id']), array(), __('Seguro desea Eliminar la Comunicacion # %s?', $comunicacione['Comunicacione']['numero_comuni'])); ?> </li>
 	</ul>
 </div>

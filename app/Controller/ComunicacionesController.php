@@ -143,10 +143,10 @@ class ComunicacionesController extends AppController {
 			$this->Comunicacione->create();
 			if ($this->Comunicacione->save($this->request->data)) {
 
-				$this->Session->setFlash(__('The comunicacione has been saved.'));
+				$this->Session->setFlash(__('La Comunicacion a sido Guardada.'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The comunicacione could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('La comunicacion no se pudo Guardar. Por Favor, Intente de Nuevo.'));
 			}
 		}
 		$dependencias = $this->Comunicacione->Dependencia->find('list');
@@ -168,10 +168,10 @@ class ComunicacionesController extends AppController {
 		}
 		if ($this->request->is(array('post', 'put'))) {
 			if ($this->Comunicacione->save($this->request->data)) {
-				$this->Session->setFlash(__('The comunicacione has been saved.'));
+				$this->Session->setFlash(__('La Comunicacion a sido Guardada.'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The comunicacione could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('La comunicacion no se pudo Guardar. Por Favor, Intente de Nuevo.'));
 			}
 		} else {
 			$options = array('conditions' => array('Comunicacione.' . $this->Comunicacione->primaryKey => $id));
@@ -196,9 +196,9 @@ class ComunicacionesController extends AppController {
 		}
 		$this->request->allowMethod('post', 'delete');
 		if ($this->Comunicacione->delete()) {
-			$this->Session->setFlash(__('The comunicacione has been deleted.'));
+			$this->Session->setFlash(__('La Comunicacion a sido Eliminada.'));
 		} else {
-			$this->Session->setFlash(__('The comunicacione could not be deleted. Please, try again.'));
+			$this->Session->setFlash(__('La comunicacion no se pudo Eliminar. Por Favor, Intente de Nuevo.'));
 		}
 		return $this->redirect(array('action' => 'index'));
 	}
