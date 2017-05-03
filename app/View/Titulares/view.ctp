@@ -6,21 +6,18 @@
 			<?php echo h($titulare['Titulare']['id']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Apellidos'); ?></dt>
-		<dd>
-			<?php echo h($titulare['Titulare']['apellidos']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Nombres'); ?></dt>
-		<dd>
-			<?php echo h($titulare['Titulare']['nombres']); ?>
-			&nbsp;
-		</dd>
 		<dt><?php echo __('Cedula'); ?></dt>
 		<dd>
 			<?php echo h($titulare['Titulare']['cedula']); ?>
+			
+		</dd>
+		<dt><?php echo __('Apellidos, Nombres '); ?></dt>
+		<dd>
+			<?php echo h($titulare['Titulare']['apellidos']).', '.h($titulare['Titulare']['nombres']); ?>
 			&nbsp;
 		</dd>
+		
+		
 		<dt><?php echo __('Fecha Nacimiento'); ?></dt>
 		<dd>
 			<?php echo h($titulare['Titulare']['fecha_nacimiento']); ?>
