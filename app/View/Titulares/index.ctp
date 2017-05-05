@@ -4,18 +4,18 @@
 	<thead>
 	<tr>
 			<th><?php echo $this->Paginator->sort('id'); ?></th>
-			<th><?php echo $this->Paginator->sort('apellidos'); ?></th>
-			<th><?php echo $this->Paginator->sort('nombres'); ?></th>
 			<th><?php echo $this->Paginator->sort('cedula'); ?></th>
-			<th><?php echo $this->Paginator->sort('fecha_nacimiento'); ?></th>
-			<th><?php echo $this->Paginator->sort('fecha_ingreso'); ?></th>
-			<th><?php echo $this->Paginator->sort('lugar_nacimiento'); ?></th>
-			<th><?php echo $this->Paginator->sort('edad'); ?></th>
-			<th><?php echo $this->Paginator->sort('estado_civil'); ?></th>
-			<th><?php echo $this->Paginator->sort('direccion'); ?></th>
-			<th><?php echo $this->Paginator->sort('telefono'); ?></th>
+			<th><?php echo $this->Paginator->sort('apellidos, nombres'); ?></th>
+			<th><?php //echo $this->Paginator->sort('nombres'); ?></th>
+			<th><?php //echo $this->Paginator->sort('fecha_nacimiento'); ?></th>
+			<th><?php //echo $this->Paginator->sort('fecha_ingreso'); ?></th>
+			<th><?php //echo $this->Paginator->sort('lugar_nacimiento'); ?></th>
+			<th><?php //echo $this->Paginator->sort('edad'); ?></th>
+			<th><?php //echo $this->Paginator->sort('estado_civil'); ?></th>
+			<th><?php //echo $this->Paginator->sort('direccion'); ?></th>
+			<th><?php //echo $this->Paginator->sort('telefono'); ?></th>
 			<th><?php echo $this->Paginator->sort('tipo_personal'); ?></th>
-			<th><?php echo $this->Paginator->sort('estatus'); ?></th>
+			<th><?php //echo $this->Paginator->sort('estatus'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
 	</thead>
@@ -23,18 +23,18 @@
 	<?php foreach ($titulares as $titulare): ?>
 	<tr>
 		<td><?php echo h($titulare['Titulare']['id']); ?>&nbsp;</td>
-		<td><?php echo h($titulare['Titulare']['apellidos']); ?>&nbsp;</td>
-		<td><?php echo h($titulare['Titulare']['nombres']); ?>&nbsp;</td>
 		<td><?php echo h($titulare['Titulare']['cedula']); ?>&nbsp;</td>
-		<td><?php echo h($titulare['Titulare']['fecha_nacimiento']); ?>&nbsp;</td>
-		<td><?php echo h($titulare['Titulare']['fecha_ingreso']); ?>&nbsp;</td>
-		<td><?php echo h($titulare['Titulare']['lugar_nacimiento']); ?>&nbsp;</td>
-		<td><?php echo h($titulare['Titulare']['edad']); ?>&nbsp;</td>
-		<td><?php echo h($titulare['Titulare']['estado_civil']); ?>&nbsp;</td>
-		<td><?php echo h($titulare['Titulare']['direccion']); ?>&nbsp;</td>
-		<td><?php echo h($titulare['Titulare']['telefono']); ?>&nbsp;</td>
+		<td><?php echo h($titulare['Titulare']['apellidos']). ' '.h($titulare['Titulare']['nombres']); ?>&nbsp;</td>
+		<td><?php //echo h($titulare['Titulare']['nombres']); ?>&nbsp;</td>
+		<td><?php //echo h($titulare['Titulare']['fecha_nacimiento']); ?>&nbsp;</td>
+		<td><?php //echo h($titulare['Titulare']['fecha_ingreso']); ?>&nbsp;</td>
+		<td><?php //echo h($titulare['Titulare']['lugar_nacimiento']); ?>&nbsp;</td>
+		<td><?php //echo h($titulare['Titulare']['edad']); ?>&nbsp;</td>
+		<td><?php //echo h($titulare['Titulare']['estado_civil']); ?>&nbsp;</td>
+		<td><?php //echo h($titulare['Titulare']['direccion']); ?>&nbsp;</td>
+		<td><?php //echo h($titulare['Titulare']['telefono']); ?>&nbsp;</td>
 		<td><?php echo h($titulare['Titulare']['tipo_personal']); ?>&nbsp;</td>
-		<td><?php echo h($titulare['Titulare']['estatus']); ?>&nbsp;</td>
+		<td><?php //echo h($titulare['Titulare']['estatus']); ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $titulare['Titulare']['id'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $titulare['Titulare']['id'])); ?>

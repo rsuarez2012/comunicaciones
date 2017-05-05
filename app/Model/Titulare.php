@@ -129,7 +129,7 @@ class Titulare extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'estatus' => array(
+		/*'estatus' => array(
 			'boolean' => array(
 				'rule' => array('boolean'),
 				//'message' => 'Your custom message here',
@@ -138,6 +138,12 @@ class Titulare extends AppModel {
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
-		),
+		),*/
 	);
+	public $hasMany = array(
+			'Beneficiario' => array(
+				'className' => 'Beneficiario',
+				'foreignKey' => 'titulare_id',
+				)
+		);
 }
