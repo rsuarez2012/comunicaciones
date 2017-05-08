@@ -28,12 +28,40 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 	<?php
 		echo $this->Html->meta('icon');
 
-		echo $this->Html->css('cake.generic');
+		echo $this->Html->css(array('cake.generic', 'sweetalert2.min','sweetalert2'));
+		echo $this->Html->script(array('jquery','sweetalert2', 'sweetalert2.min'));
 
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
 		echo $this->fetch('script');
 	?>
+	<script type="text/javascript">
+		jQuery(document).ready(function(){
+			jQuery("#messages").click(function() {
+				swal("Texto del mensaje", 'success');
+			});
+		jQuery("#messages").click(function() {	
+			swal({
+			  title: 'Are you sure?',
+			  text: "You won't be able to revert this!",
+			  type: 'warning',
+			  showCancelButton: true,
+			  confirmButtonColor: '#3085d6',
+			  cancelButtonColor: '#d33',
+			  confirmButtonText: 'Yes, delete it!'
+			}).then(function () {
+				$('#messages').html(modulo + ' - Retirar Alumno');
+    			$("#messages").load("<?php  echo $this->webroot; ?>/titulares/delete/"+id);
+			  swal(
+			    'Deleted!',
+			    'Your file has been deleted.',
+			    'success'
+			  )
+			})
+
+			});
+		});
+	</script>
 	<style type="text/css">
 		ul{
 			list-style: none; 
