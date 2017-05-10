@@ -23,7 +23,14 @@ class DependenciasController extends AppController {
  */
 	public function index() {
 		$this->Dependencia->recursive = 0;
-		$this->set('dependencias', $this->Paginator->paginate());
+		//$this->set('dependencias', $this->Paginator->paginate());
+		$this->paginate = array(
+			'conditions' => array('Dependencia.id !=' => 'id'),
+			'limit' => 5,
+			'order' => array('id' => 'asc')
+			);
+		$dependencias = $this->paginate('Dependencia');
+		$this->set('dependencias', $dependencias);
 	}
 
 /**

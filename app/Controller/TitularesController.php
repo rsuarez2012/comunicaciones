@@ -15,7 +15,8 @@ class TitularesController extends AppController {
  * @var array
  */
 	public $components = array('Paginator', 'Session');
-
+	//public $components = array('Paginator', 'Flash');
+	//public $helpers = array('Html', 'Form',"Session", 'Flash');
 /**
  * index method
  *
@@ -23,7 +24,14 @@ class TitularesController extends AppController {
  */
 	public function index() {
 		$this->Titulare->recursive = 0;
-		$this->set('titulares', $this->Paginator->paginate());
+		//$this->set('titulares', $this->Paginator->paginate());
+		$this->paginate = array(
+			'conditions' => array('Titulare.id !=' => 'id'),
+			'limit' => 10,
+			'order' => array('id' => 'asc')
+			);
+		$titulares = $this->paginate('Titulare');
+		$this->set('titulares', $titulares);
 	}
 
 /**
@@ -51,6 +59,8 @@ class TitularesController extends AppController {
 			$this->Titulare->create();
 			if ($this->Titulare->save($this->request->data)) {
 				$this->Session->setFlash(__('The titulare has been saved.'));
+				//$this->Session->setFlash('Alumno almacenado con éxito!', 'default', array(), 'flash_good');
+				//$this->Session->setFlash('Docente almacenado con éxito!', 'flash_bien');
 				return $this->redirect(array('action' => 'index'));
 			} else {
 				$this->Session->setFlash(__('The titulare could not be saved. Please, try again.'));
@@ -97,6 +107,13 @@ class TitularesController extends AppController {
 		$this->request->allowMethod('post', 'delete');
 		if ($this->Titulare->delete()) {
 			$this->Session->setFlash(__('The titulare has been deleted.'));
+			//Primera opcion 
+			//$this->Session->setFlash('Something bad.', 'default', array(), 'bad');
+			//segunda opcion creando un mensaje en app/View/Elements/flash_custom.ctp
+			//$this->Session->setFlash('Something custom!', 'flash_custom');
+
+			//$this->Session->setFlash(__('My message.'), 'flash_notification');
+
 		} else {
 			$this->Session->setFlash(__('The titulare could not be deleted. Please, try again.'));
 		}
