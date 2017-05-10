@@ -5,7 +5,7 @@
 	<tr>
 			<th><?php echo $this->Paginator->sort('id'); ?></th>
 			<th><?php echo $this->Paginator->sort('nombre'); ?></th>
-			<th class="actions"><?php echo __('Actions'); ?></th>
+			<th class="actions"><?php echo __('Acciones'); ?></th>
 	</tr>
 	</thead>
 	<tbody>
@@ -14,9 +14,9 @@
 		<td><?php echo h($dependencia['Dependencia']['id']); ?>&nbsp;</td>
 		<td><?php echo h($dependencia['Dependencia']['nombre']); ?>&nbsp;</td>
 		<td class="actions">
-			<?php echo $this->Html->link(__('View'), array('action' => 'view', $dependencia['Dependencia']['id'])); ?>
-			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $dependencia['Dependencia']['id'])); ?>
-			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $dependencia['Dependencia']['id']), array(), __('Are you sure you want to delete # %s?', $dependencia['Dependencia']['id'])); ?>
+			<?php echo $this->Html->link(__('Ver'), array('action' => 'view', $dependencia['Dependencia']['id'])); ?>
+			<?php echo $this->Html->link(__('Editar'), array('action' => 'edit', $dependencia['Dependencia']['id'])); ?>
+			<?php echo $this->Form->postLink(__('Eliminar'), array('action' => 'delete', $dependencia['Dependencia']['id']), array(), __('Seguro desea eliminar esta dependencia # %s?', $dependencia['Dependencia']['id'])); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>
@@ -37,8 +37,8 @@
 	</div>
 </div>
 <div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
+	<h3><?php echo __('Acciones'); ?></h3>
 	<ul>
-		<li><?php echo $this->Html->link(__('New Dependencia'), array('action' => 'add')); ?></li>
+		<li><?php echo $this->Html->link(__('Nueva Dependencia'), array('action' => 'add')); ?></li>
 	</ul>
 </div>

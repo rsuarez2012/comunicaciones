@@ -1,7 +1,7 @@
 <div class="directivos form">
 <?php echo $this->Form->create('Directivo'); ?>
 	<fieldset>
-		<legend><?php echo __('Add Directivo'); ?></legend>
+		<legend><?php echo __('Nuevo Directivo'); ?></legend>
 	<?php
 		echo $this->Form->input('nombres');
 		echo $this->Form->input('apellidos');
@@ -9,12 +9,12 @@
 		echo $this->Form->input('resolucion');
 	?>
 	</fieldset>
-<?php echo $this->Form->end(__('Submit')); ?>
+<?php echo $this->Form->end(__('Guardar')); ?>
 </div>
 <div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
+	<h3><?php echo __('Acciones'); ?></h3>
 	<ul>
 
-		<li><?php echo $this->Html->link(__('List Directivos'), array('action' => 'index')); ?></li>
+		<li><?php echo $this->Html->link(__('Lista Directivos'), array('action' => 'index')); ?></li>
 	</ul>
 </div>

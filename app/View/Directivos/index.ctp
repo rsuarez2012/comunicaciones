@@ -20,9 +20,9 @@
 		<td><?php echo h($directivo['Directivo']['cedula']); ?>&nbsp;</td>
 		<td><?php echo h($directivo['Directivo']['resolucion']); ?>&nbsp;</td>
 		<td class="actions">
-			<?php echo $this->Html->link(__('View'), array('action' => 'view', $directivo['Directivo']['id'])); ?>
-			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $directivo['Directivo']['id'])); ?>
-			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $directivo['Directivo']['id']), array(), __('Are you sure you want to delete # %s?', $directivo['Directivo']['id'])); ?>
+			<?php echo $this->Html->link(__('Ver'), array('action' => 'view', $directivo['Directivo']['id'])); ?>
+			<?php echo $this->Html->link(__('Editar'), array('action' => 'edit', $directivo['Directivo']['id'])); ?>
+			<?php echo $this->Form->postLink(__('Eliminar'), array('action' => 'delete', $directivo['Directivo']['id']), array(), __('Seguro desea Eliminar # %s?', $directivo['Directivo']['id'])); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>
@@ -43,8 +43,8 @@
 	</div>
 </div>
 <div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
+	<h3><?php echo __('Acciones'); ?></h3>
 	<ul>
-		<li><?php echo $this->Html->link(__('New Directivo'), array('action' => 'add')); ?></li>
+		<li><?php echo $this->Html->link(__('Nuevo Directivo'), array('action' => 'add')); ?></li>
 	</ul>
 </div>

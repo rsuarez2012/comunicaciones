@@ -14,12 +14,12 @@
 	</dl>
 </div>
 <div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
+	<h3><?php echo __('Acciones'); ?></h3>
 	<ul>
-		<li><?php echo $this->Html->link(__('Edit Dependencia'), array('action' => 'edit', $dependencia['Dependencia']['id'])); ?> </li>
-		<li><?php echo $this->Form->postLink(__('Delete Dependencia'), array('action' => 'delete', $dependencia['Dependencia']['id']), array(), __('Are you sure you want to delete # %s?', $dependencia['Dependencia']['id'])); ?> </li>
-		<li><?php echo $this->Html->link(__('List Dependencias'), array('action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Dependencia'), array('action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Editar Dependencia'), array('action' => 'edit', $dependencia['Dependencia']['id'])); ?> </li>
+		<li><?php echo $this->Form->postLink(__('Eliminar Dependencia'), array('action' => 'delete', $dependencia['Dependencia']['id']), array(), __('Seguro desea Eliminar esta dependencia # %s?', $dependencia['Dependencia']['id'])); ?> </li>
+		<li><?php echo $this->Html->link(__('Lista Dependencias'), array('action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('Nueva Dependencia'), array('action' => 'add')); ?> </li>
 	</ul>
 </div>
 <div class="related">
