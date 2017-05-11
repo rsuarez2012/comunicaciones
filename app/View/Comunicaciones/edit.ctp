@@ -21,6 +21,8 @@
 	?>
 	<label>Enviar Copia A:</label>
 	<?php echo $this->Form->input('Dependencia.Dependencia', array('multiple'=>true, 'label'=>false));?>
+	<label><b>Anexo</b></label>
+			<?php echo $this->Form->checkbox('anexo', array('label'=>'false'));?>
 	</fieldset>
 <?php echo $this->Form->end(__('Editar')); ?>
 </div>

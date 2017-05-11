@@ -82,6 +82,8 @@ $para = $post['Dependencia']['nombre'];
 $de = "DIRECCION DE SEGURIDAD SOCIAL UNERG";
 $fecha = date("d-m-Y", strtotime($post['Comunicacione']['fecha']));
 $cuerpo = $post['Comunicacione']['cuerpo'];
+$anexo = $post['Comunicacione']['anexo'];
+
 $nume = str_pad($post['Comunicacione']['numero_comuni'],3, '0', STR_PAD_LEFT);
 $director = $post['Directivo']['director'];
 $ce_dire = $post['Directivo']['cedula'];
@@ -162,6 +164,17 @@ foreach ($copias as $po) {
     $i++;
 }
 $html2 = $html2.'</table>';
+
+$html2 = <<<EOD
+
+
+EOD;
+if ($anexo == 1){ 
+    $html2 = $html2.'
+    <p style="font-size:10px;"><b>Anexo: lo indicado</b></p>';
+}
+
+
 $html3 =<<<EOD
 <p style="font-size:10px;">RQ/ib</p>
 <b style="font-size:10px">$di - $da</b>

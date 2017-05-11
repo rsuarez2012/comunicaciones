@@ -47,6 +47,8 @@
 	<?php 
 			//$dependencias = array('VRAD'=>'VRAD','VRAC'=>'VRAC');
 			//echo $this->Form->input('copia_a',array('multiple'=> true, 'options'=>$dependencias));?>
+			<label><b>Anexo</b></label>
+			<?php echo $this->Form->checkbox('anexo', array('label'=>'false'));?>
 	</fieldset>
 <?php echo $this->Form->end(__('Guardar')); ?>
 </div>

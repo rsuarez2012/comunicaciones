@@ -1,5 +1,5 @@
 <div class="comunicaciones view">
-<h2><?php echo __('Comunicacione'); //pr($comunicacione);?></h2>
+<h2><?php echo __('Comunicacion numero:').' '.str_pad(h($comunicacione['Comunicacione']['numero_comuni']),3,'0',STR_PAD_LEFT) ; //pr($comunicacione);?></h2>
 	<dl>
 		<!--<dt><?php //echo __('Id'); ?></dt>
 		<dd>
@@ -73,6 +73,25 @@
 
 					<?php echo $copia['Dependencia']['nombre'];?><br>
 				<?php $i++;		 }?>
+				
+
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Anexos'); ?></dt>
+		<dd>
+			
+				<?php 
+					/*$i=1;
+					foreach($copias as $copia) { ?>
+
+					<?php echo $copia['Dependencia']['nombre'];?><br>
+				<?php $i++;		 }*/?>
+
+				<?php if($comunicacione['Comunicacione']['anexo'] == 1){?>
+							<?php echo "Si posee anexos";?>
+				<?php }else{ ?>
+							<?php echo "No posee anexos";?>
+				<?php } ?> 
 				
 
 			&nbsp;
