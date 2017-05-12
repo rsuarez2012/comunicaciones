@@ -16,7 +16,15 @@ class ComunicacionesController extends AppController {
  */
 	public $components = array('Paginator', 'Session');
 	public $helpers = array('Html', 'Form', 'Session');
+
 	public function isAuthorized($user) {
+        //auth check
+        //return boolean
+        if ($this->action === 'add') {
+	        return true;
+	    }
+    }
+	/*public function isAuthorized($user) {
 	    // All registered users can add posts
 	    if ($this->action === 'add') {
 	        return true;
@@ -28,10 +36,10 @@ class ComunicacionesController extends AppController {
 	        if ($this->Comunicacione->isOwnedBy($postId, $user['id'])) {
 	            return true;
 	        }
-	    }*/
+	    }
 
 	    return parent::isAuthorized($user);
-	}
+	}*/
 
 	//paginador
 	/*public $paginate = array('fields' => array('Comunicacione.id', 'Comunicacione.asunto'),'limit' => 5, 'order' => array('Comunicacione.id' => 'desc'));
