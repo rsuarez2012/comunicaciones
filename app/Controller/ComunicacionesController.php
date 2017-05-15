@@ -57,6 +57,11 @@ class ComunicacionesController extends AppController {
  *
  * @return void
  */
+	public function beforeFilter()
+	{
+		# code...
+		$this->Auth->authorized=false;
+	}
 	public function index() {
 		$this->Comunicacione->recursive = 0;
 		$this->paginate=array(
