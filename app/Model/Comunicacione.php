@@ -13,6 +13,7 @@ class Comunicacione extends AppModel {
  *
  * @var array
  */
+	public $name ="Comunicacione";
 	public $validate = array(
 		'dependencia_id' => array(
 			'numeric' => array(

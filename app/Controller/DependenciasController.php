@@ -41,11 +41,19 @@ class DependenciasController extends AppController {
  * @return void
  */
 	public function view($id = null) {
+		
 		if (!$this->Dependencia->exists($id)) {
 			throw new NotFoundException(__('Invalid dependencia'));
 		}
 		$options = array('conditions' => array('Dependencia.' . $this->Dependencia->primaryKey => $id));
 		$this->set('dependencia', $this->Dependencia->find('first', $options));
+		
+
+		$this->loadModel('Comunicacione');
+		$comunicacione =  array('conditions'=>array('Dependencia.id'=>$id));
+		$this->set('comunicacione',$this->Comunicacione->find('all',$comunicacione));
+
+		//pr($comunicacione);
 	}
 
 /**

@@ -2,7 +2,7 @@
 <?php echo $this->Form->create('Comunicacione'); ?>
 
 
- <?php echo $this->Form->hidden('ComunicacionesDependencia.dependencia_id', array('label'=>false, 'name' => 'data[ComunicacionesDependencia][dependencia_id]'));?>
+ <?php //echo $this->Form->hidden('ComunicacionesDependencia.dependencia_id', array('label'=>false, 'name' => 'data[ComunicacionesDependencia][dependencia_id]'));?>
 	<fieldset>
 		<legend><?php echo __('Nueva Comunicacion'); ?></legend>
 		<!--<label>Num.:</label>-->
@@ -27,7 +27,7 @@
 		echo $this->Form->input('asunto');
 		echo $this->Form->input('fecha', array('dateFormat'=>'DMY'));
 		echo $this->Form->input('cuerpo');
-		echo $this->Form->input('directivo_id',array('type'=> 'hidden'));
+		echo $this->Form->input('directivo_id');
 		?>
 
 		<label><b>Enviar Copia A</b></label>

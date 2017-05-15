@@ -100,8 +100,6 @@ UNIVERSIDAD NACIONAL EXPERIMENTAL <br>
 "ROMULO GALLEGOS"<br> 
 Direccion de Seguridad Social<br>
 Estado Guarico</p></td></tr></table>
-
-<br>
 <br>
 <table border="">
     <tr>
@@ -121,15 +119,13 @@ Estado Guarico</p></td></tr></table>
     </tr>
 </table>
 
-
-<br>
 <br>
     <p text-align="left" style="text-align:justify;">&nbsp;&nbsp;&nbsp;$cuerpo</p>
 
-<br>
+
 <br>
 <p style="font-size:12px;">              Esperando su pronta respuesta, se se despide de usted orgulloso de ser Unergista.</p>
-<br>
+
 <br>
 <br>
 <br>
@@ -165,10 +161,7 @@ foreach ($copias as $po) {
 }
 $html2 = $html2.'</table>';
 
-$html2 = <<<EOD
 
-
-EOD;
 if ($anexo == 1){ 
     $html2 = $html2.'
     <p style="font-size:10px;"><b>Anexo: lo indicado</b></p>';

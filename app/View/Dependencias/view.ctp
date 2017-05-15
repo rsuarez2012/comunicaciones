@@ -24,7 +24,10 @@
 </div>
 <div class="related">
 	
-	<?php if(!empty($dependencia['Comunicacione'])==0){ ?>
+	<?php // if(!empty($dependencia['Comunicacione'])==0){ ?>
+	<?php if(!empty($dependencia['Comunicacione']['id'])==$comunicacione){ ?>
+		<?php //if(!empty($comunicacione['Comunicacione']['dependencia_id']) == $dependencia['Dependencia']['id']) { ?>
+
 		<?php echo ('No tiene comunicaciones enviadas, desea agregar');?>
 		<?php echo $this->Html->link(__('Nueva Comunicacion?'), array('controller' => 'Comunicaciones', 'action'=>'add'));?>
 		<?php }else{ ?>
@@ -44,23 +47,23 @@
 					
 					<th class="action"><?php echo __('Acciones');?></th>
 				</tr>
-				<?php foreach ($dependencia['Comunicacione'] as $beneficiario): ?>
+				<?php foreach ($comunicacione as $beneficiario): ?>
 				<tr>
-					<td><?php echo $beneficiario['id'];?></td>
+					<td><?php echo $beneficiario['Comunicacione']['id'];?></td>
 
-					<td><?php echo date("d-m-Y", strtotime($beneficiario['fecha'])); ?></td>
+					<td><?php echo date("d-m-Y", strtotime($beneficiario['Comunicacione']['fecha'])); ?></td>
 
-					<td><?php echo str_pad($beneficiario['numero_comuni'],3,'0',STR_PAD_LEFT); ?></td>
+					<td><?php echo str_pad($beneficiario['Comunicacione']['numero_comuni'],3,'0',STR_PAD_LEFT); ?></td>
 
-					<td><?php echo $beneficiario['asunto'];?></td>
+					<td><?php echo $beneficiario['Comunicacione']['asunto'];?></td>
 
-										
+
 					<td class="actions">
-						<?php echo $this->Html->link(__('Ver'), array('controller' => 'Comunicaciones', 'action'=>'view', $beneficiario['id']));?>
+						<?php echo $this->Html->link(__('Ver'), array('controller' => 'Comunicaciones', 'action'=>'view', $beneficiario['Comunicacione']['id']));?>
 
-						<?php echo $this->Html->link(__('Editar'), array('controller' => 'Comunicaciones', 'action'=>'edit', $beneficiario['id']));?>
+						<?php echo $this->Html->link(__('Editar'), array('controller' => 'Comunicaciones', 'action'=>'edit', $beneficiario['Comunicacione']['id']));?>
 
-						<?php echo $this->Html->link(__('Eliminar'), array('controller' => 'Comunicaciones', 'action'=>'delete', $beneficiario['id']),array(),__('Seguro de que desea Eliminar la Comunicacion: %s', $beneficiario['asunto']));?>
+						<?php echo $this->Html->link(__('Eliminar'), array('controller' => 'Comunicaciones', 'action'=>'delete', $beneficiario['Comunicacione']['id']),array(),__('Seguro de que desea Eliminar la Comunicacion: %s', $beneficiario['Comunicacione']['asunto']));?>
 
 
 

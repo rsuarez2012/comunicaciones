@@ -16,6 +16,9 @@ class ComunicacionesController extends AppController {
  */
 	public $components = array('Paginator', 'Session');
 	public $helpers = array('Html', 'Form', 'Session');
+	public function beforeFilter(){
+		$this->Auth->authorized=false;
+	}
 	public function isAuthorized($user) {
 	    // All registered users can add posts
 	    if ($this->action === 'add') {
@@ -138,7 +141,7 @@ class ComunicacionesController extends AppController {
  */
 	public function add() {
 		$ult_comunicacion = $this->Comunicacione->find('first');
-		$this->set('numero_comunicacion', $ult_comunicacion["Comunicacione"]["id"]);
+		//$this->set('numero_comunicacion', $ult_comunicacion["Comunicacione"]["id"]);
 		if ($this->request->is('post')) {
 			$this->Comunicacione->create();
 			if ($this->Comunicacione->save($this->request->data)) {
@@ -149,6 +152,7 @@ class ComunicacionesController extends AppController {
 				$this->Session->setFlash(__('La comunicacion no se pudo Guardar. Por Favor, Intente de Nuevo.'));
 			}
 		}
+
 		$dependencias = $this->Comunicacione->Dependencia->find('list');
 		$directivos = $this->Comunicacione->Directivo->find('list');
 		$this->set(compact('dependencias', 'directivos'));
