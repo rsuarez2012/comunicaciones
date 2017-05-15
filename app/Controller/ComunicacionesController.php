@@ -17,6 +17,22 @@ class ComunicacionesController extends AppController {
 	public $components = array('Paginator', 'Session');
 	public $helpers = array('Html', 'Form', 'Session');
 
+
+
+
+
+
+
+
+
+
+	public function beforeFilter(){
+		# code...
+		$this->Auth->authorize=false;
+	}
+
+
+
 	public function isAuthorized($user) {
         //auth check
         //return boolean
@@ -57,11 +73,7 @@ class ComunicacionesController extends AppController {
  *
  * @return void
  */
-	public function beforeFilter()
-	{
-		# code...
-		$this->Auth->authorized=false;
-	}
+
 	public function index() {
 		$this->Comunicacione->recursive = 0;
 		$this->paginate=array(
