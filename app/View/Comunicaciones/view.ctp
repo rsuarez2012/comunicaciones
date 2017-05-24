@@ -101,7 +101,7 @@
 <div class="actions">
 	<h3><?php echo __('Accion'); ?></h3>
 	<ul>
-		<li><?php echo $this->Html->link(__('Imprimir'), array('action' => 'comunicacion', $comunicacione['Comunicacione']['id'])); ?> </li><br>
+		<li><?php echo $this->Html->link(__('Imprimir'), array('action' => 'comunicacion', $comunicacione['Comunicacione']['id']),array('target' => '_blank')); ?> </li><br>
 		<li><?php echo $this->Html->link(__('Editar'), array('action' => 'edit', $comunicacione['Comunicacione']['id'])); ?> </li><br>
 		<li><?php echo $this->Form->postLink(__('Eliminar'), array('action' => 'delete', $comunicacione['Comunicacione']['id']), array(), __('Seguro desea Eliminar la Comunicacion # %s?', $comunicacione['Comunicacione']['numero_comuni'])); ?> </li>
 	</ul>
