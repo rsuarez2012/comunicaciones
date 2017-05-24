@@ -48,6 +48,9 @@ class BeneficiariosController extends AppController {
  * @return void
  */
 	public function add() {
+		$this->loadModel('Titulare');
+		$titulare = $this->Titulare->read('titulare');
+		$this->set('titulare', $this->Titulare->find('first', array('conditions'=>array('Titulare.id' => $titulare['id']))));
 		if ($this->request->is('post')) {
 			$this->Beneficiario->create();
 			if ($this->Beneficiario->save($this->request->data)) {

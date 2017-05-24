@@ -8,7 +8,7 @@
 		echo $this->Form->input('nombres');
 		echo $this->Form->input('fecha_nacimiento');
 		echo $this->Form->input('parentesco');
-		echo $this->Form->input('titulare_id');
+		echo $this->Form->input('titulare_id', array('value' => $titulares['Titulare']['id']));
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>
@@ -22,3 +22,4 @@
 		<li><?php echo $this->Html->link(__('New Titulare'), array('controller' => 'titulares', 'action' => 'add')); ?> </li>
 	</ul>
 </div>
+<?php echo pr($titulare);?>

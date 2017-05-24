@@ -1,5 +1,5 @@
 <div class="titulares index">
-	<h2><?php echo __('Titulares'); ?></h2>
+	<h2><span class="label label-info"><?php echo __('Titulares'); ?></span></h2>
 	<table cellpadding="0" cellspacing="0">
 	<thead>
 	<tr>
