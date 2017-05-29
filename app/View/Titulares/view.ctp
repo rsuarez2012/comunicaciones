@@ -1,56 +1,63 @@
 <div class="panel panel-info">
   <!-- Default panel contents -->
   <div class="panel-heading">
-  	<?php echo __('Titular'); ?>-<?php echo h($titulare['Titulare']['cedula'].' '.h($titulare['Titulare']['apellidos']).', '.h($titulare['Titulare']['nombres'])); ?>
+  	
   </div>
 
   	<table class="table">
+  	
   	<tr>
-  			<td rowspan="12" width="20%">
-  				<div class="actions">
-					<h3><?php echo __('Actions'); ?></h3>
-					<ul>
-						<li><?php echo $this->Html->link(__('Edit Titulare'), array('action' => 'edit', $titulare['Titulare']['id'])); ?> </li>
-						<li><?php echo $this->Form->postLink(__('Delete Titulare'), array('action' => 'delete', $titulare['Titulare']['id']), array(), __('Are you sure you want to delete # %s?', $titulare['Titulare']['id'])); ?> </li>
-						<li><?php echo $this->Html->link(__('List Titulares'), array('action' => 'index')); ?> </li>
-						<li><?php echo $this->Html->link(__('New Titulare'), array('action' => 'add')); ?> </li>
-					</ul>
+  			
+  		</tr>
+  		<tr>
+  		<th colspan="2" align="center"><?php echo __('Titular'); ?>-<?php echo h($titulare['Titulare']['cedula'].' '.h($titulare['Titulare']['apellidos']).', '.h($titulare['Titulare']['nombres'])); ?>
+  			<div class="actions" style="display:in-block;">
+					
+						<?php echo $this->Html->link(__('Editar Titular'), array('action' => 'edit', $titulare['Titulare']['id'])); ?><?php echo $this->Form->postLink(__('Eliminar Titular'), array('action' => 'delete', $titulare['Titulare']['id']), array(), __('Seguro desea eliminar # %s?', $titulare['Titulare']['id'])); ?>
 				</div>
+  		</th>
+  		<td>
+  				
 			</td>
   		</tr>
   		<tr>
-  			<th><?php echo __('Cedula'); ?></th><td><?php echo h($titulare['Titulare']['cedula']); ?></td>
+  			<th><?php echo __('Fecha Nacimiento'); ?></th> 
+  			<th><?php echo __('Lugar Nacimiento'); ?></th>
+
   		</tr>
   		<tr>
-  			<th><?php echo __('Apellidos, Nombres '); ?></th><td><?php echo h($titulare['Titulare']['apellidos']).', '.h($titulare['Titulare']['nombres']); ?></td>
+  			<td><?php echo h($titulare['Titulare']['fecha_nacimiento']); ?></td>
+  			<td><?php echo h($titulare['Titulare']['lugar_nacimiento']); ?></td>
+
+  		</tr>
+  		
+  		<tr>
+  			<th><?php echo __('Edad'); ?></th>
+  			<th><?php echo __('Estado Civil'); ?></th>
   		</tr>
   		<tr>
-  			<th><?php echo __('Fecha Nacimiento'); ?></th> <td><?php echo h($titulare['Titulare']['fecha_nacimiento']); ?></td>
+  			<td><?php echo h($titulare['Titulare']['edad']); ?></td>
+
+  			<td><?php echo h($titulare['Titulare']['estado_civil']); ?></td>
   		</tr>
   		<tr>
-  			<th><?php echo __('Fecha Ingreso'); ?></th><td><?php echo h($titulare['Titulare']['fecha_ingreso']); ?></td>
-			
+  			<th><?php echo __('Direccion'); ?></th>
+  			<th><?php echo __('Telefono'); ?></th>
   		</tr>
   		<tr>
-  			<th><?php echo __('Lugar Nacimiento'); ?></th><td><?php echo h($titulare['Titulare']['lugar_nacimiento']); ?></td>
+  			<td><?php echo h($titulare['Titulare']['direccion']); ?></td>
+
+  			<td><?php echo h($titulare['Titulare']['telefono']); ?></td>
+
   		</tr>
   		<tr>
-  			<th><?php echo __('Edad'); ?></th><td><?php echo h($titulare['Titulare']['edad']); ?></td>
+			<th><?php echo __('Tipo Personal'); ?></th>
+			<th><?php echo __('Fecha Ingreso'); ?></th>
   		</tr>
   		<tr>
-  			<th><?php echo __('Estado Civil'); ?></th><td><?php echo h($titulare['Titulare']['estado_civil']); ?></td>
-  		</tr>
-  		<tr>
-  			<th><?php echo __('Direccion'); ?></th><td><?php echo h($titulare['Titulare']['direccion']); ?></td>
-  		</tr>
-  		<tr>
-  			<th><?php echo __('Telefono'); ?></th><td><?php echo h($titulare['Titulare']['telefono']); ?></td>
-  		</tr>
-  		<tr>
-			<th><?php echo __('Tipo Personal'); ?></th><td><?php echo h($titulare['Titulare']['tipo_personal']); ?></td>
-  		</tr>
-  		<tr>
-  			<th><?php echo __('Estatus'); ?></th><td><?php echo h($titulare['Titulare']['estatus']); ?></td>
+  			<td><?php echo h($titulare['Titulare']['tipo_personal']); ?></td>
+  			<td><?php echo h($titulare['Titulare']['fecha_ingreso']); ?></td>
+
   		</tr>
   		
 
@@ -63,7 +70,8 @@
 	
 		<?php if(!empty($titulare['Beneficiario'])==0){ ?>
 			<?php echo ('No tiene carga Familiar, desea agregar');?>
-			<?php echo $this->Html->link(__('Beneficiario?'), array('controller' => 'Beneficiarios', 'action'=>'add'));?>
+			<div class="actions">
+			<?php echo $this->Html->link(__('Beneficiario?'), array('controller' => 'Beneficiarios', 'action'=>'add'));?></div>
 			<?php }else{ ?>
 			<div class="titulares view">
 				<h2><?php echo __('Beneficiarios'); ?></h2>
@@ -98,7 +106,8 @@
 						</td>
 					</tr>
 					<?php endforeach;?>
-					<?php echo $this->Html->link(__('Agregar Beneficiario'), array('controller' => 'Beneficiarios', 'action'=>'add'));?>
+					<div class="actions">
+					<?php echo $this->Html->link(__('Agregar Beneficiario'), array('controller' => 'Beneficiarios', 'action'=>'add'));?></div>
 				</table>
 			<?php } ?> 
 		<?php //}endif; ?>

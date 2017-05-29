@@ -28,8 +28,8 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 	<?php
 		echo $this->Html->meta('icon');
 
-		echo $this->Html->css(array('cake.generic', 'sweetalert2.min','sweetalert2'));
-		echo $this->Html->script(array('jquery','sweetalert2', 'sweetalert2.min'));
+		echo $this->Html->css(array('cake.generic', 'sweetalert2.min','sweetalert2','bootstrap.min2'));
+		echo $this->Html->script(array('jquery','sweetalert2', 'sweetalert2.min','bootstrap.min2'));
 
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
@@ -80,24 +80,35 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 	</style>
 </head>
 <body>
+<?php //if(isset($current_user)): ?>
+						<?php //endif; ?>
+
 	<div id="container">
 		<div id="header">
 			<h1>
-				<?php echo $this->Html->link($cakeDescription, 'http://localhost/comunicaciones/'); ?>
 				
 			</h1>
-			<ul class="nav navbar-nav" style="display: block;">
-		        <li><a href="<?php echo $this->webroot; ?>comunicaciones">Comunicaciones</a></li>
-		        <li><a href="<?php echo $this->webroot; ?>directivos">Directivos</a></li>
-		        <li><a href="<?php echo $this->webroot; ?>dependencias">Dependencias</a></li>
-		        <li><a href="<?php echo $this->webroot; ?>titulares">Titulares</a></li>
-		        <li><a href="<?php echo $this->webroot; ?>users/logout">Salir</a></li>	
-		        <!--<li><a href="<?php //echo $this->webroot; ?>roles">Roles</a></li>	 -->       
-		      </ul>
+			<nav class="navbar navbar-inverse navbar-fixed-top">
+				<div class="container-fluid">
+					<div class="navbar-header">
+					<?php echo $this->Html->link($cakeDescription, 'http://localhost/comunicaciones/'); ?>
+						
+					</div>
+						<?php if(isset($user)):?>					
+							<?php echo $this->element('menu'); ?>
+						<?php endif; ?>
+
+						<?php //debug($user);?>
+						
+					
+				</div>
+			</nav>
+			
 		</div>
 		<div id="content">
 
 			<?php echo $this->Session->flash(); ?>
+			<?php echo $this->Session->flash('auth'); ?>
 
 			<?php echo $this->fetch('content'); ?>
 		</div>

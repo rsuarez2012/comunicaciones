@@ -16,7 +16,7 @@
 			<th><?php //echo $this->Paginator->sort('telefono'); ?></th>
 			<th><?php echo $this->Paginator->sort('tipo_personal'); ?></th>
 			<th><?php //echo $this->Paginator->sort('estatus'); ?></th>
-			<th class="actions"><?php echo __('Actions'); ?></th>
+			<th class="actions"><?php echo __('Acciones'); ?></th>
 	</tr>
 	</thead>
 	<tbody>
@@ -36,9 +36,9 @@
 		<td><?php echo h($titulare['Titulare']['tipo_personal']); ?>&nbsp;</td>
 		<td><?php //echo h($titulare['Titulare']['estatus']); ?>&nbsp;</td>
 		<td class="actions">
-			<?php echo $this->Html->link(__('View'), array('action' => 'view', $titulare['Titulare']['id'])); ?>
-			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $titulare['Titulare']['id'])); ?>
-			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $titulare['Titulare']['id']), array(), __('Are you sure you want to delete # %s?', $titulare['Titulare']['id'])); ?>
+			<?php echo $this->Html->link(__('Ver'), array('action' => 'view', $titulare['Titulare']['id'])); ?>
+			<?php echo $this->Html->link(__('Editar'), array('action' => 'edit', $titulare['Titulare']['id'])); ?>
+			<?php echo $this->Form->postLink(__('Eliminar'), array('action' => 'delete', $titulare['Titulare']['id']), array(), __('Seguro desea Eliminar # %s?', $titulare['Titulare']['id'])); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>
@@ -52,15 +52,15 @@
 	?>	</p>
 	<div class="paging">
 	<?php
-		echo $this->Paginator->prev('< ' . __('previous'), array(), null, array('class' => 'prev disabled'));
+		echo $this->Paginator->prev('< ' . __('anterior'), array(), null, array('class' => 'prev disabled'));
 		echo $this->Paginator->numbers(array('separator' => ''));
-		echo $this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next disabled'));
+		echo $this->Paginator->next(__('proximo') . ' >', array(), null, array('class' => 'next disabled'));
 	?>
 	</div>
 </div>
 <div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
+	<h3><?php echo __('Acciones'); ?></h3>
 	<ul>
-		<li><?php echo $this->Html->link(__('New Titulare'), array('action' => 'add')); ?></li>
+		<li><?php echo $this->Html->link(__('Nuevo Titular'), array('action' => 'add')); ?></li>
 	</ul>
 </div>

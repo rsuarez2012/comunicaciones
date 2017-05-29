@@ -28,7 +28,7 @@ public $validate = array(
         ),
         'role' => array(
             'valid' => array(
-                'rule' => array('inList', array('admin', 'author')),
+                'rule' => array('inList', array('admin', 'usuario')),
                 'message' => 'Please enter a valid role',
                 'allowEmpty' => false
             )

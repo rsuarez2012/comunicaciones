@@ -52,21 +52,43 @@ class AppController extends Controller {
                 )
             ),
 			'authorize' => array('Controller'), // Added this line,
+            'authError' => false
         )
     );
-    public function isAuthorized($user) {
-    /*// Admin can access every action
+    /*public function isAuthorized($user) {
+    // Admin can access every action
     if (isset($user['role']) && $user['role'] === 'admin') {
         return true;
     }
 
     // Default deny
-    return false;*/
+    return false;
     	return $this->Auth->loggedIn($user);
 	}
 	public function beforeFilter() {
         $this->Auth->allow('index', 'view');
-    }
+    }*/
     //...
+    //
+    //
+    //public $_current_user = array();
+    
+    public function beforeFilter(){
+        AuthComponent::user('id');
+        $this->Auth->allow('login', 'logout');
+        //$this->set('current_user', $this->Auth->user());
+        //$this->_current_user = $this->Auth->user();
+        //$this->set('current_user', $this->_current_user);
+        $user = $this->Auth->user();
+        $this->set(compact('user'));
+    }
+
+    public function isAuthorized($user){
+        if (isset($user['role']) && $user['role'] === 'admin') {
+            # code...
+            return true;
+        }
+        return false;
+    }
 }
 

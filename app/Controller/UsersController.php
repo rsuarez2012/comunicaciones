@@ -18,7 +18,24 @@ class UsersController extends AppController {
  * @var array
  */
 	public $components = array('Paginator', 'Session', 'Flash');
-	public function isAuthorized($user) {
+	public function beforeFilter(){
+		parent::beforeFilter();
+	}
+	public function isAuthorized($user){
+		if($user['role'] == 'usuario'){
+			if(in_array($this->action, array('add', 'index'))){
+				return true;
+			}
+			else{
+				if($this->Auth->user('id')){
+					$this->Session->setFlash('no puede ingresar');
+					$this->redirect($this->Auth->redirect());
+				}
+			}
+		}
+		return parent::isAuthorized($user);
+	}
+	/*public function isAuthorized($user) {
 	    // All registered users can add posts
 	    if ($this->action === 'add') {
 	        return true;
@@ -33,7 +50,7 @@ class UsersController extends AppController {
 	    }
 
 	    return parent::isAuthorized($user);
-	}
+	}*/
 
 /**
  * index method
@@ -41,10 +58,10 @@ class UsersController extends AppController {
  * @return void
  */
 
-	public function beforeFilter() {
+	/*public function beforeFilter() {
         parent::beforeFilter();
-        $this->Auth->allow('add', 'logout');
-    }
+        $this->Auth->allow('add+', 'logout');
+    }*/
     public function login() {
     	$this->layout = 'sesion';
 	    if ($this->request->is('post')) {

@@ -16,46 +16,23 @@ class ComunicacionesController extends AppController {
  */
 	public $components = array('Paginator', 'Session');
 	public $helpers = array('Html', 'Form', 'Session');
-
-
-
-
-
-
-
-
-
-
 	public function beforeFilter(){
-		# code...
-		$this->Auth->authorize=false;
+		parent::beforeFilter();
 	}
-
-
-
-	public function isAuthorized($user) {
-        //auth check
-        //return boolean
-        if ($this->action === 'add') {
-	        return true;
-	    }
-    }
-	/*public function isAuthorized($user) {
-	    // All registered users can add posts
-	    if ($this->action === 'add') {
-	        return true;
-	    }
-
-	    // The owner of a post can edit and delete it
-	    /*if (in_array($this->action, array('edit', 'delete'))) {
-	        $postId = (int) $this->request->params['pass'][0];
-	        if ($this->Comunicacione->isOwnedBy($postId, $user['id'])) {
-	            return true;
-	        }
-	    }
-
-	    return parent::isAuthorized($user);
-	}*/
+	public function isAuthorized($user){
+		if($user['role'] == 'usuario'){
+			if(in_array($this->action, array('add', 'edit', 'view', 'index', 'comunicacion'))){
+				return true;
+			}
+			else{
+				if($this->Auth->user('id')){
+					$this->Session->setFlash('no puede ingresar');
+					$this->redirect($this->Auth->redirect());
+				}
+			}
+		}
+		return parent::isAuthorized($user);
+	}
 
 	//paginador
 	/*public $paginate = array('fields' => array('Comunicacione.id', 'Comunicacione.asunto'),'limit' => 5, 'order' => array('Comunicacione.id' => 'desc'));
