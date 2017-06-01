@@ -53,7 +53,7 @@ class ComunicacionesController extends AppController {
 
 	public function index() {
 		$this->Comunicacione->recursive = 0;
-		$this->paginate=array(
+		/*$this->paginate=array(
 			'conditions'=>array('Comunicacione.id !=' => 'id'),
 			'limit' => 5,
 			'order' => array('id' => 'desc')
@@ -64,7 +64,9 @@ class ComunicacionesController extends AppController {
 			);*/
 		
 		//$this->set('comunicaciones',$this->Paginator->paginate());
-			$this->set('comunicaciones', $comunicaciones);
+			$this->set('comunicaciones', $this->Paginator->paginate());
+
+			//$this->set('comunicaciones', $comunicaciones);
 
 		//Buscar
 		$title = array();

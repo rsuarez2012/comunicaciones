@@ -14,7 +14,7 @@
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
 
-$cakeDescription = __d('cake_dev', 'Sistema de Gestion y Seguimiento de DISEO-UNERG');
+$cakeDescription = __d('cake_dev', 'Sistema de Gestion y Seguimiento de DISESO-UNERG');
 $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 ?>
 <!DOCTYPE html>
@@ -25,16 +25,18 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 		<?php echo $cakeDescription ?>:
 		<?php echo $this->fetch('title'); ?>
 	</title>
+	
 	<?php
 		echo $this->Html->meta('icon');
 
-		echo $this->Html->css(array('cake.generic', 'sweetalert2.min','sweetalert2','bootstrap.min2'));
-		echo $this->Html->script(array('jquery','sweetalert2', 'sweetalert2.min','bootstrap.min2'));
+		echo $this->Html->css(array('cake.generic2', 'magic','login','bootstrap', 'main', 'theme', 'MoneAdmin','layout2', 'dataTables.bootstrap'));
+		echo $this->Html->script(array('jquery','jquery-2.0.3.min', 'login','bootstrap', 'dataTables/dataTables.bootstrap', 'dataTables/jquery.dataTables'));
 
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
 		echo $this->fetch('script');
 	?>
+
 	<script type="text/javascript">
 		jQuery(document).ready(function(){
 			jQuery("#messages").click(function() {
@@ -79,40 +81,59 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 		}
 	</style>
 </head>
-<body>
-<?php //if(isset($current_user)): ?>
-						<?php //endif; ?>
-
-	<div id="container">
-		<div id="header">
-			<h1>
-				
-			</h1>
+<body class="padTop53">
+	<div id="wrap">
+		<div id="top">
 			<nav class="navbar navbar-inverse navbar-fixed-top">
-				<div class="container-fluid">
-					<div class="navbar-header">
-					<?php echo $this->Html->link($cakeDescription, 'http://localhost/comunicaciones/'); ?>
-						
+					<div class="container-fluid">
+						<div class="navbar-header">
+								<?php echo $this->Html->link($cakeDescription, 'http://localhost/comunicaciones/'); ?>
+						</div>
+							
+
+							<?php //debug($user);?>
 					</div>
-						<?php if(isset($user)):?>					
+			</nav>
+		</div>
+
+		<div id="left">
+			<div class="media user-media well-small">
+                <a class="user-link" href="#">
+                    <img class="media-object img-thumbnail user-img" alt="User Picture" src="assets/img/user.gif" />
+                </a>
+                <br />
+                <div class="media-body">
+                    <h5 class="media-heading"> Joe Romlin</h5>
+                    <ul class="list-unstyled user-info">
+                        
+                        <li>
+                             <a class="btn btn-success btn-xs btn-circle" style="width: 10px;height: 12px;"></a> Online
+                           
+                        </li>
+                       
+                    </ul>
+                </div>
+                <br />
+            </div>
+					<?php if(isset($user)):?>					
 							<?php echo $this->element('menu'); ?>
 						<?php endif; ?>
-
-						<?php //debug($user);?>
-						
-					
-				</div>
-			</nav>
 			
 		</div>
-		<div id="content">
-
-			<?php echo $this->Session->flash(); ?>
-			<?php echo $this->Session->flash('auth'); ?>
-
-			<?php echo $this->fetch('content'); ?>
+		<!--<div id="container">-->
+		<div id="content" style="width: 80%;">
+			
+						<?php echo $this->Session->flash(); ?>
+						<?php echo $this->Session->flash('auth'); ?>
+						
+							
+						<?php echo $this->fetch('content'); ?>
+				
 		</div>
-		<div id="footer">
+	</div>
+
+	
+		<!--<div id="footer">
 			<?php /*echo $this->Html->link(
 					$this->Html->image('cake.power.gif', array('alt' => $cakeDescription, 'border' => '0')),
 					'http://localhost/comunicaciones/',
@@ -122,8 +143,8 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 			<p>
 				<?php //echo $cakeVersion; ?>
 			</p>
-		</div>
-	</div>
+		</div>-->
+	<!--</div>-->
 	<?php echo $this->element('sql_dump'); ?>
 </body>
 </html>

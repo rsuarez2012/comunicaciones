@@ -1,57 +1,59 @@
-<div class="comunicaciones form">
-<?php echo $this->Form->create('Comunicacione'); ?>
+<div class="inner">
+	<div class="row">
+		<!--<div class="col-lg-12">
+			<h1 class="page-header"><?php //echo __('Nueva Comunicacion'); ?></h1>
+		</div>-->
+	</div>
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="panel panel-default">
+				<div class="panel-heading">Comunicacion Nueva</div>
+				<div class="panel-body">
+				<div class="row">
+					<div class="col-lg-6">
 
-
- <?php //echo $this->Form->hidden('ComunicacionesDependencia.dependencia_id', array('label'=>false, 'name' => 'data[ComunicacionesDependencia][dependencia_id]'));?>
-	<fieldset>
-		<legend><?php echo __('Nueva Comunicacion'); ?></legend>
-		<!--<label>Num.:</label>-->
-	<?php 
-		//echo str_pad(($numero_comunicacion),3,'0',STR_PAD_LEFT); 
-		//$num = str_pad((00),3,'0',STR_PAD_LEFT);
-	?>
-	<label><b>Numero Comunicacion</b></label>
-	<?php
-		//$num = str_pad(($numero_comunicacion + 1),8,'0',STR_PAD_LEFT);
-
-		
-			echo $this->Form->input('numero_comuni',
-				array('numero_comuni', 'label'=>false));
-		
-
-
-
-
-		echo $this->Form->input('dependencia_id');//,array('multiple'=> true)
-		
-		echo $this->Form->input('asunto');
-		echo $this->Form->input('fecha', array('dateFormat'=>'DMY'));
-		echo $this->Form->input('cuerpo');
-		echo $this->Form->input('directivo_id');
-		?>
-
-		<label><b>Enviar Copia A</b></label>
-		<?php echo $this->Form->input('Dependencia.Dependencia', array('multiple'=>true, 'label'=>false));?>
-
-
-
-
-
-
-
-		<?php
-		//echo $this->Form->input('copia_a');//,array('multiple'=> true, 'options'=>array('dependencias')));
-		//echo $this->Form->input('ComunicacionesDependencia.dependencia_id', array('multiple'=>true));//,array('multiple'=> true, 'options'=>array('dependencias')));
-	?>
-	<!--<label>Copia a:</label>-->
-	<?php 
-			//$dependencias = array('VRAD'=>'VRAD','VRAC'=>'VRAC');
-			//echo $this->Form->input('copia_a',array('multiple'=> true, 'options'=>$dependencias));?>
-			<label><b>Anexo</b></label>
-			<?php echo $this->Form->checkbox('anexo', array('label'=>'false'));?>
-	</fieldset>
-<?php echo $this->Form->end(__('Guardar')); ?>
-</div>
+						<?php echo $this->Form->create('Comunicacione'); ?>
+						<div class="form-group">
+							<label>Numero Comunicacion</label>
+							<?php echo $this->Form->input('numero_comuni', array('numero_comuni', 'label'=>false, 'class'=>'form-control'));?>
+						</div>
+						<div class="form-group">
+							<label>Dependencia</label>
+							<?php echo $this->Form->input('dependencia_id', array('dependencia_id', 'label'=>false, 'class'=>'form-control'));?>
+						</div>
+						<div class="form-group">
+							<label>Asunto</label>
+							<?php echo $this->Form->input('asunto', array('asunto', 'label'=>false, 'class'=>'form-control'));?>
+						</div>
+						<div class="form-group">
+							<label>Fecha</label>
+							<?php echo $this->Form->input('fecha', array('fecha', 'dateFormat'=>'DMY', 'label'=>false, 'class'=>'form-control'));?>
+						</div>
+						<div class="form-group">
+							<label>Cuerpo</label>
+							<?php echo $this->Form->input('cuerpo', array('cuerpo', 'label'=>false, 'class'=>'form-control'));?>
+						</div>
+						<div class="form-group">
+							<label>Director</label>
+							<?php echo $this->Form->input('directivo_id', array('directivo_id', 'label'=>false, 'class'=>'form-control'));?>
+						</div>
+						<div class="form-group">
+							<label>Enviar Copia A</label>
+							<?php echo $this->Form->input('Dependencia.Dependencia', array('multiple'=>true, 'class'=>'form-control', 'label'=>false));?>
+						</div>
+						<div class="form-group">
+							<label>Agregar Anexo</label>
+							
+								<?php echo $this->Form->checkbox('anexo', array('label'=>'false'));?>
+							
+						</div>
+						<?php echo $this->Form->button('Guardar', array('class'=>'btn btn-success'));?>
+						<?php echo $this->Form->end(); ?>
+					</div>
+				</div>
+		</div>
+	</div>
+ 
 <div class="actions">
 	<h3><?php echo __('Acciones'); ?></h3>
 	<ul>

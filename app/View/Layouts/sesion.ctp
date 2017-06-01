@@ -33,6 +33,10 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 		echo $this->Html->meta('icon');
 
 		//echo $this->Html->css();
+		echo $this->Html->css(array('magic','login','bootstrap'));
+		echo $this->Html->script(array('jquery','jquery-2.0.3.min', 'login','bootstrap'));
+		//echo $this->Html->script(array('jquery','jquery-2.0.3.min', 'login','bootstrap'));
+
 
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
@@ -54,6 +58,9 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
      <?php //echo $this->Html->script();     ?>
     <!-- Le javascript
     ================================================== -->
+    <!--<script src="assets/plugins/jquery-2.0.3.min.js"></script>
+      <script src="assets/plugins/bootstrap/js/bootstrap.js"></script>
+   <script src="assets/js/login.js"></script>-->
 
    </body>
 
@@ -62,4 +69,5 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
         setTimeout('$("html").removeClass("loader")',100);
       });*/
     </script>
+
 </html>
