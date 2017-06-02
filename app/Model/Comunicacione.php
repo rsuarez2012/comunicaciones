@@ -66,14 +66,21 @@ class Comunicacione extends AppModel {
 			),
 		),
 		'numero_comuni' => array(
-			'numeric' => array(
-				'rule' => array('isUnique', 'numeric'),
+			/*'numeric' => array(
+				'rule' => array('isUnique' => array('on'=> 'create'), 'numeric'),
 				'message' => 'El Numero de Comunicacion esta repetido',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
+			),*/
+			/*'rule' => array(
+					'on' => 'create',
+					'rule' => array('isUnique', 'numeric'),
+					'message' => 'El Numero de Comunicacion esta repetido',
+				),*/
+			/*'numeric'*/
+			'unique'=>array('rule' => 'isUnique', 'on' => 'create', 'message' => 'El Numero de Comunicacion esta repetido',),
 		),
 		//'copia_a' => array(
 			//'notEmpty' => array(

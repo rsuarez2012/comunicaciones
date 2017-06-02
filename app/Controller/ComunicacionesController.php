@@ -172,12 +172,14 @@ class ComunicacionesController extends AppController {
 			throw new NotFoundException(__('Invalid comunicacione'));
 		}
 		if ($this->request->is(array('post', 'put'))) {
+			$this->Comunicacione->id = $id;
 			if ($this->Comunicacione->save($this->request->data)) {
 				$this->Session->setFlash(__('La Comunicacion a sido Guardada.'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('La comunicacion no se pudo Guardar. Por Favor, Intente de Nuevo.'));
+				$this->Session->setFlash(__('La comunicacion no se pudo Guardar. Por Favor, Intente de Nuevo.'),array('div'=>array('class'=>'danger')));
 			}
+			debug($this->Comunicacione->validationErrors);
 		} else {
 			$options = array('conditions' => array('Comunicacione.' . $this->Comunicacione->primaryKey => $id));
 			$this->request->data = $this->Comunicacione->find('first', $options);
