@@ -29,8 +29,8 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 	<?php
 		echo $this->Html->meta('icon');
 
-		echo $this->Html->css(array('cake.generic2', 'magic','login','bootstrap', 'main', 'theme', 'MoneAdmin','layout2', 'dataTables.bootstrap'));
-		echo $this->Html->script(array('jquery','jquery-2.0.3.min', 'login','bootstrap', 'dataTables/dataTables.bootstrap', 'dataTables/jquery.dataTables'));
+		echo $this->Html->css(array('jquery.dataTables.min', 'magic','login','bootstrap', 'main', 'theme', 'MoneAdmin','layout2', 'dataTables.bootstrap'));
+		echo $this->Html->script(array('jquery','jquery-1.12.4','jquery.dataTables.min','jquery-2.0.3.min', 'login','bootstrap', 'dataTables/dataTables.bootstrap', 'dataTables/jquery.dataTables'));
 
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
@@ -92,6 +92,24 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 							
 
 							<?php //debug($user);?>
+						<ul class="nav navbar-top-links navbar-right">
+							<li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="icon-user "></i>&nbsp; <i class="icon-chevron-down ">Usuario: <?php echo $user['username'];?></i>
+                        </a>
+
+                        <ul class="dropdown-menu dropdown-user">
+                            <li><a href="#"><i class="icon-user"></i> User Profile </a>
+                            </li>
+                            <li><a href="#"><i class="icon-gear"></i> Settings </a>
+                            </li>
+                            <li class="divider"></li>
+                            <li><a href="<?php echo $this->webroot; ?>users/logout"><i class="icon-signout"></i> Logout </a>
+                            </li>
+                        </ul>
+
+                    </li>
+						</ul>
 					</div>
 			</nav>
 		</div>
@@ -99,11 +117,11 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 		<div id="left">
 			<div class="media user-media well-small">
                 <a class="user-link" href="#">
-                    <img class="media-object img-thumbnail user-img" alt="User Picture" src="assets/img/user.gif" />
+                    <img class="media-object img-thumbnail user-img" alt="User Picture" src="img/user.gif" />
                 </a>
                 <br />
                 <div class="media-body">
-                    <h5 class="media-heading"> Joe Romlin</h5>
+                    <h5 class="media-heading"> <?php echo $user['username'];?></h5>
                     <ul class="list-unstyled user-info">
                         
                         <li>

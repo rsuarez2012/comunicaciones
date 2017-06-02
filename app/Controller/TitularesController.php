@@ -23,15 +23,16 @@ class TitularesController extends AppController {
  * @return void
  */
 	public function index() {
-		$this->Titulare->recursive = 0;
+		//$this->Titulare->recursive = 0;
 		//$this->set('titulares', $this->Paginator->paginate());
-		$this->paginate = array(
+		/*$this->paginate = array(
 			'conditions' => array('Titulare.id !=' => 'id'),
 			'limit' => 10,
 			'order' => array('id' => 'asc')
-			);
-		$titulares = $this->paginate('Titulare');
-		$this->set('titulares', $titulares);
+			);*/
+		//$titulares = $this->paginate();
+		//$this->set('titulares', $titulares);
+		$this->set('titulares', $this->Titulare->find('all', array('order' => 'cedula')));
 	}
 
 /**

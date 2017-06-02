@@ -25,7 +25,7 @@
 					        <li><a href="<?php echo $this->webroot; ?>dependencias">Dependencias</a></li>
 					        <li><a href="<?php echo $this->webroot; ?>titulares">Titulares</a></li>
 		<?php endif; ?>
-					        <li><a href="<?php echo $this->webroot; ?>users/logout"><?php echo $user['username'];?>&nbsp;Salir</a></li>	
+					        <!--<li><a href="<?php //echo $this->webroot; ?>users/logout"><?php //echo $user['username'];?>&nbsp;Salir</a></li>	-->
 					        <!--<li><a href="<?php //echo $this->webroot; ?>roles">Roles</a></li>	 -->
 					    </ul>
 					   <!-- </div> -->

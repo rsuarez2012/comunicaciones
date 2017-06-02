@@ -52,7 +52,9 @@ class ComunicacionesController extends AppController {
  */
 
 	public function index() {
-		$this->Comunicacione->recursive = 0;
+		$this->set('comunicaciones', $this->Comunicacione->find('all', array('order' => 'numero_comuni')));
+
+		//$this->Comunicacione->recursive = 0;
 		/*$this->paginate=array(
 			'conditions'=>array('Comunicacione.id !=' => 'id'),
 			'limit' => 5,
@@ -64,56 +66,9 @@ class ComunicacionesController extends AppController {
 			);*/
 		
 		//$this->set('comunicaciones',$this->Paginator->paginate());
-			$this->set('comunicaciones', $this->Paginator->paginate());
+			//$this->set('comunicaciones', $this->Paginator->paginate());
 
 			//$this->set('comunicaciones', $comunicaciones);
-
-		//Buscar
-		$title = array();
-		if(isset($this->passedArgs['Search.keywords'])) {
-			$keywords = $this->passedArgs['Search.keywords'];
-			$this->paginate['conditions'][] = array(
-				'OR' => array(
-					'Comunicacione.asunto LIKE' => "%$keywords%",
-					//'Comunicacione.body LIKE' => "%$keywords%",
-				)
-			);
-			$this->request->data['Search']['keywords'] = $keywords;
-			$title[] = __('Keywords',true).': '.$keywords;
-		}
-
-		$posts = $this->paginate();
-		/*foreach($posts as $k=>$post) {
-			$posts[$k]['CategoryPath'] = $this->Post->Category->getPath($post['Post']['category_id']);
-			$posts[$k]['CategoryPath'] = $posts[$k]['CategoryPath']?$posts[$k]['CategoryPath']:array(); 
-		}*/
-
-		// set title
-		$title = implode(' | ',$title);
-		$title = (isset($title)&&$title)?$title:__('All Posts',true);
-		
-		// set related data
-		//pr($title);
-		$tags = $this->Comunicacione->find('list');
-		$this->set(compact('posts','tags','title'));
-		/*if(isset($this->passedArgs['Search.id'])) {
-			// set the conditions
-			$this->Paginator->paginate['conditions'][]['Comunicacione.id'] = $this->passedArgs['Search.id'];
-			//$this->Paginator->options(array('url' => $this->passedArgs));
-
-			// set the Search data, so the form remembers the option
-			$this->request->data['Search']['id'] = $this->passedArgs['Search.id'];
-
-			// set the Page Title (not required)
-			$title[] = __('ID',true).': '.$this->passedArgs['Search.id'];
-		}
-		$comunicaciones = $this->paginate();
-		$title = implode(' | ',$title);
-		$title = (isset($title)&&$title)?$title:__('All Posts',true);
-		
-		// set related data
-		$tags = $this->Comunicacione->find('list');
-		$this->set(compact('comunicaciones','tags','title'));*/
 	}
 
 /**

@@ -1,66 +1,50 @@
-<div class="titulares index">
-	<h2><span class="label label-info"><?php echo __('Titulares'); ?></span></h2>
-	<table cellpadding="0" cellspacing="0">
-	<thead>
-	<tr>
-			<th><?php echo $this->Paginator->sort('id'); ?></th>
-			<th><?php echo $this->Paginator->sort('cedula'); ?></th>
-			<th><?php echo $this->Paginator->sort('apellidos, nombres'); ?></th>
-			<th><?php //echo $this->Paginator->sort('nombres'); ?></th>
-			<th><?php //echo $this->Paginator->sort('fecha_nacimiento'); ?></th>
-			<th><?php //echo $this->Paginator->sort('fecha_ingreso'); ?></th>
-			<th><?php //echo $this->Paginator->sort('lugar_nacimiento'); ?></th>
-			<th><?php //echo $this->Paginator->sort('edad'); ?></th>
-			<th><?php //echo $this->Paginator->sort('estado_civil'); ?></th>
-			<th><?php //echo $this->Paginator->sort('direccion'); ?></th>
-			<th><?php //echo $this->Paginator->sort('telefono'); ?></th>
-			<th><?php echo $this->Paginator->sort('tipo_personal'); ?></th>
-			<th><?php //echo $this->Paginator->sort('estatus'); ?></th>
-			<th class="actions"><?php echo __('Acciones'); ?></th>
-	</tr>
-	</thead>
-	<tbody>
-	<?php foreach ($titulares as $titulare): ?>
-	<tr>
-		<td><?php echo h($titulare['Titulare']['id']); ?>&nbsp;</td>
-		<td><?php echo h($titulare['Titulare']['cedula']); ?>&nbsp;</td>
-		<td><?php echo h($titulare['Titulare']['apellidos']). ' '.h($titulare['Titulare']['nombres']); ?>&nbsp;</td>
-		<td><?php //echo h($titulare['Titulare']['nombres']); ?>&nbsp;</td>
-		<td><?php //echo h($titulare['Titulare']['fecha_nacimiento']); ?>&nbsp;</td>
-		<td><?php //echo h($titulare['Titulare']['fecha_ingreso']); ?>&nbsp;</td>
-		<td><?php //echo h($titulare['Titulare']['lugar_nacimiento']); ?>&nbsp;</td>
-		<td><?php //echo h($titulare['Titulare']['edad']); ?>&nbsp;</td>
-		<td><?php //echo h($titulare['Titulare']['estado_civil']); ?>&nbsp;</td>
-		<td><?php //echo h($titulare['Titulare']['direccion']); ?>&nbsp;</td>
-		<td><?php //echo h($titulare['Titulare']['telefono']); ?>&nbsp;</td>
-		<td><?php echo h($titulare['Titulare']['tipo_personal']); ?>&nbsp;</td>
-		<td><?php //echo h($titulare['Titulare']['estatus']); ?>&nbsp;</td>
-		<td class="actions">
-			<?php echo $this->Html->link(__('Ver'), array('action' => 'view', $titulare['Titulare']['id'])); ?>
-			<?php echo $this->Html->link(__('Editar'), array('action' => 'edit', $titulare['Titulare']['id'])); ?>
-			<?php echo $this->Form->postLink(__('Eliminar'), array('action' => 'delete', $titulare['Titulare']['id']), array(), __('Seguro desea Eliminar # %s?', $titulare['Titulare']['id'])); ?>
-		</td>
-	</tr>
-<?php endforeach; ?>
-	</tbody>
-	</table>
-	<p>
-	<?php
-	echo $this->Paginator->counter(array(
-	'format' => __('Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}')
-	));
-	?>	</p>
-	<div class="paging">
-	<?php
-		echo $this->Paginator->prev('< ' . __('anterior'), array(), null, array('class' => 'prev disabled'));
-		echo $this->Paginator->numbers(array('separator' => ''));
-		echo $this->Paginator->next(__('proximo') . ' >', array(), null, array('class' => 'next disabled'));
-	?>
-	</div>
+<div class="panel panel-default">
+    <div class="panel-heading">Titulares</div>
+        <div class="panel-body">
+        <div class="table-responsive">
+        <table id="example" class="display" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Cedula</th>
+                        <th>Apellidos y Nombres</th>
+                        <th>Tipo Personal</th>
+                        <th>Acciones</th>
+                        
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>Cedula</th>
+                        <th>Apellidos y Nombres</th>
+                        <th>Tipo Personal</th>
+                        <th>Acciones</th>
+                      
+                    </tr>
+                </tfoot>
+                <tbody>
+                    <?php foreach ($titulares as $titulare): ?>
+            <tr>
+                <td><?php echo h($titulare['Titulare']['cedula']); ?>&nbsp;</td>
+                <td><?php echo h($titulare['Titulare']['apellidos']). ' '.h($titulare['Titulare']['nombres']); ?>&nbsp;</td>
+                <td><?php echo h($titulare['Titulare']['tipo_personal']); ?>&nbsp;</td>
+
+                
+                <td>
+                                                        <?php echo $this->Html->link(__('Ver'), array('action' => 'view', $titulare['Titulare']['id']), array('class' => 'btn btn-info btn-xs')); ?>
+                                                    <?php echo $this->Html->link(__('Editar'), array('action' => 'edit', $titulare['Titulare']['id']), array('class' => 'btn btn-warning btn-xs')); ?>
+                                                    <?php echo $this->Form->postLink(__('Eliminar'), array('action' => 'delete', $titulare['Titulare']['id']), array('class' => 'btn btn-danger btn-xs'), array(), __('Seguro desea Eliminar el Titular #%s?', $titulare['Titulare']['id'])); ?>
+                                                    
+                                                    </td>
+            </tr>
+        <?php endforeach; ?>
+                    </tbody>
+    </table>
+    </div>
+    </div>
 </div>
-<div class="actions">
-	<h3><?php echo __('Acciones'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('Nuevo Titular'), array('action' => 'add')); ?></li>
-	</ul>
-</div>
+
+    <script>
+        $(document).ready(function() {
+            $('#example').DataTable();
+        } );
+    </script>
