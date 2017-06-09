@@ -81,6 +81,8 @@ class TitularesController extends AppController {
 			throw new NotFoundException(__('Invalid titulare'));
 		}
 		if ($this->request->is(array('post', 'put'))) {
+			$this->Titulare->id = $id;
+
 			if ($this->Titulare->save($this->request->data)) {
 				$this->Session->setFlash(__('The titulare has been saved.'));
 				return $this->redirect(array('action' => 'index'));

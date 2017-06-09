@@ -47,7 +47,7 @@ class BeneficiariosController extends AppController {
  *
  * @return void
  */
-	public function add() {
+	public function add($titulare_id=null) {
 		$this->loadModel('Titulare');
 		$titulare = $this->Titulare->read('titulare');
 		$this->set('titulare', $this->Titulare->find('first', array('conditions'=>array('Titulare.id' => $titulare['id']))));
@@ -55,13 +55,14 @@ class BeneficiariosController extends AppController {
 			$this->Beneficiario->create();
 			if ($this->Beneficiario->save($this->request->data)) {
 				$this->Session->setFlash(__('The beneficiario has been saved.'));
-				return $this->redirect(array('action' => 'index'));
+				return $this->redirect(array('controller'=>'titulares', 'action' => 'index'));
 			} else {
 				$this->Session->setFlash(__('The beneficiario could not be saved. Please, try again.'));
 			}
 		}
-		$titulares = $this->Beneficiario->Titulare->find('list');
-		$this->set(compact('titulares'));
+		//$titulares = $this->Beneficiario->Titulare->find('list');
+		//$this->set(compact('titulares'));
+		$this->set(compact('titulare_id', $titulare_id	));
 	}
 
 /**
@@ -71,14 +72,14 @@ class BeneficiariosController extends AppController {
  * @param string $id
  * @return void
  */
-	public function edit($id = null) {
+	public function edit($id = null, $titulare_id=null) {
 		if (!$this->Beneficiario->exists($id)) {
 			throw new NotFoundException(__('Invalid beneficiario'));
 		}
 		if ($this->request->is(array('post', 'put'))) {
 			if ($this->Beneficiario->save($this->request->data)) {
 				$this->Session->setFlash(__('The beneficiario has been saved.'));
-				return $this->redirect(array('action' => 'index'));
+				return $this->redirect(array('controller'=>'titulares', 'action' => 'index'));
 			} else {
 				$this->Session->setFlash(__('The beneficiario could not be saved. Please, try again.'));
 			}
@@ -87,7 +88,7 @@ class BeneficiariosController extends AppController {
 			$this->request->data = $this->Beneficiario->find('first', $options);
 		}
 		$titulares = $this->Beneficiario->Titulare->find('list');
-		$this->set(compact('titulares'));
+		$this->set(compact('titulares', 'titulare_id', $titulare_id));
 	}
 
 /**
@@ -102,9 +103,11 @@ class BeneficiariosController extends AppController {
 		if (!$this->Beneficiario->exists()) {
 			throw new NotFoundException(__('Invalid beneficiario'));
 		}
-		$this->request->allowMethod('post', 'delete');
+		//$this->request->allowMethod('post', 'delete');
+		$this->request->allowMethod('get', 'delete');
 		if ($this->Beneficiario->delete()) {
 			$this->Session->setFlash(__('The beneficiario has been deleted.'));
+			return $this->redirect(array('controller'=>'titulares', 'action'=>'index'));
 		} else {
 			$this->Session->setFlash(__('The beneficiario could not be deleted. Please, try again.'));
 		}

@@ -1,5 +1,9 @@
 <div class="panel panel-default">
-    <div class="panel-heading">Titulares</div>
+  
+    <div class="panel-heading">Titulares&nbsp;  
+            <?php echo $this->Html->link(__('Nuevo Titular'), array('controller' => 'Titulares', 'action'=>'add'),array('class' => 'btn btn-success btn-xs'));?>
+                
+    </div>
         <div class="panel-body">
         <div class="table-responsive">
         <table id="example" class="display" width="100%" cellspacing="0">

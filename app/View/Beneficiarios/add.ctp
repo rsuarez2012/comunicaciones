@@ -1,14 +1,24 @@
 <div class="beneficiarios form">
 <?php echo $this->Form->create('Beneficiario'); ?>
+<?php echo $this->Form->input('titulare_id', array('type' => 'hidden','value' => $titulare_id));?>
 	<fieldset>
 		<legend><?php echo __('Add Beneficiario'); ?></legend>
+
 	<?php
+		$parentesco = array(
+					'MADRE' => 'MADRE',
+					'PADRE' => 'PADRE',
+					'HIJO' => 'HIJO',
+					'HIJA' => 'HIJA',
+					'CONYUGUE' => 'CONYUGUE',
+					'OTRO' => 'OTRO');
+
 		echo $this->Form->input('cedula');
 		echo $this->Form->input('apellidos');
 		echo $this->Form->input('nombres');
-		echo $this->Form->input('fecha_nacimiento');
-		echo $this->Form->input('parentesco');
-		echo $this->Form->input('titulare_id', array('value' => $titulares['Titulare']['id']));
+		echo $this->Form->input('fecha_nacimiento',array('dateFormat'=>'DMY','minYear' => date('Y')-100, 'maxYear'=>date('Y')-0));
+		echo $this->Form->input('parentesco',array('options'=>$parentesco));
+		//echo $this->Form->input('titulare_id');
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>
@@ -22,4 +32,4 @@
 		<li><?php echo $this->Html->link(__('New Titulare'), array('controller' => 'titulares', 'action' => 'add')); ?> </li>
 	</ul>
 </div>
-<?php echo pr($titulare);?>
+<?php //echo pr($titulare);?>
