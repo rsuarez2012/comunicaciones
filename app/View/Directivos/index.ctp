@@ -65,7 +65,7 @@
 
 
 
-<div class="directivos index">
+<!--<div class="directivos index">
 	<h2><?php echo __('Directivos'); ?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<thead>
@@ -114,4 +114,4 @@
 	<ul>
 		<li><?php echo $this->Html->link(__('Nuevo Directivo'), array('action' => 'add')); ?></li>
 	</ul>
-</div>
+</div>-->

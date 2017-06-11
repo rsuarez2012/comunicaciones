@@ -1,4 +1,35 @@
-<div class="directivos view">
+<div class="panel panel-info">
+  <!-- Default panel contents -->
+  	<div class="panel-heading">
+  		</h4>Director(a): <?php echo h($directivo['Directivo']['nombres'].' '.h($directivo['Directivo']['apellidos']));?></h4>
+  
+  	</div>		
+  	<div class="tab-content">
+  		<table class="table">
+  	
+  	
+  		
+  		<tr>
+  			<th><?php echo __('Cedula'); ?></th> 
+  			<th><?php echo __('Resolución'); ?></th>
+
+  		</tr>
+  		<tr>
+  			<td><?php echo h($directivo['Directivo']['cedula']); ?></td>
+  			<td><?php echo h($directivo['Directivo']['resolucion']); ?></td>
+  			
+
+  		</tr>
+  		
+  	</table>
+            </div>
+        </div>
+	</div>
+</div>
+
+
+
+<!--<div class="directivos view">
 <h2><?php echo __('Directivo'); ?></h2>
 	<dl>
 		<dt><?php echo __('Id'); ?></dt>
@@ -36,4 +67,4 @@
 		<li><?php echo $this->Html->link(__('Lista Directivos'), array('action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('Nuevo Directivo'), array('action' => 'add')); ?> </li>
 	</ul>
-</div>
+</div>-->	
