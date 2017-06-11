@@ -9,6 +9,7 @@
 		</div>
   			
   </div>
+  <div class="tab-content">
 
   	<table class="table">
   	
@@ -118,6 +119,8 @@
                             </div>
                         </div>
                     </div>
+
+  </div>
 
 
 		
