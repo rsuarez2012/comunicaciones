@@ -63,7 +63,7 @@
 						</div>
 						<div class="form-group">
 							<label>Tipo de Personal</label>
-							<?php echo $this->Form->input('tipo_personal', array('options'=>$perso, 'multiple'=>true,'class'=>'form-control', 'label'=>false));?>
+							<?php echo $this->Form->input('tipo_personal', array('options'=>$perso,'class'=>'form-control', 'label'=>false));?>
 						</div>
 						<div class="form-group">
 							<label>Fecha de Ingreso</label>

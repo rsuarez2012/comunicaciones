@@ -77,6 +77,7 @@
                                             <th>#</th>
                                             <th>Cedula</th>
                                             <th>Nombres</th>
+                                            <th>Fecha Nacimiento</th>
                                             <th>Parentesco</th>
                                             <th>Acciones</th>
                                         </tr>
@@ -90,10 +91,10 @@
 												<td><?php echo $beneficiario['cedula'];?></td>
 												<td><?php echo $beneficiario['apellidos'].', '.$beneficiario['nombres'];?></td>
 												
-												<td><?php echo $beneficiario['fecha_nacimiento'];?></td>
+												<td><?php echo date("d-m-Y", strtotime($beneficiario['fecha_nacimiento']));?></td>
 												<td><?php echo $beneficiario['parentesco'];?></td>
 												<td class="actions">
-													<?php echo $this->Html->link(__('Ver'), array('controller' => 'Beneficiarios', 'action'=>'view', $beneficiario['id']), array('class' => 'btn btn-info btn-xs'));?>
+													<?php //echo $this->Html->link(__('Ver'), array('controller' => 'Beneficiarios', 'action'=>'view', $beneficiario['id']), array('class' => 'btn btn-info btn-xs'));?>
 
 													<?php echo $this->Html->link(__('Editar'), array('controller' => 'Beneficiarios', 'action'=>'edit', $beneficiario['id']), array('class' => 'btn btn-warning btn-xs'));?>
 
