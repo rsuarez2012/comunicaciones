@@ -1,4 +1,68 @@
-<div class="dependencias view">
+<div class="panel panel-info">
+  <!-- Default panel contents -->
+  	<div class="panel-heading">
+  		</h4><?php echo h($dependencia['Dependencia']['nombre']);?></h4>
+  
+  	</div>		
+  	<div class="tab-content">
+  		<div class="panel panel-warning">
+            <div class="panel-heading">
+                <?php if(!empty($dependencia['Comunicacione']['id'])==$comunicacione){ ?>
+					<?php echo ('No tiene comunicaciones enviadas, desea enviar');?>
+						<div class="actions">
+							<?php echo $this->Html->link(__('Nueva Comunicacion?'), array('controller' => 'Comunicaciones', 'action'=>'add'), array('class' => 'btn btn-success btn-xs'));?></div>
+							<?php }else{ ?>
+							<div class="titulares view">
+							<?php echo __('Comunicaciones enviadas'); ?>
+						</div>
+            </div>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th># Comunicacion</th>
+                                <th>Fecha</th>
+                                <th>Asunto</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                           	<?php foreach ($comunicacione as $beneficiario): ?>
+	                            <tr class="success">
+	                    			<td>
+	                    				<?php echo str_pad($beneficiario['Comunicacione']['numero_comuni'],3,'0',STR_PAD_LEFT); ?>
+	                    			</td>
+									<td>
+										<?php echo date("d-m-Y", strtotime($beneficiario['Comunicacione']['fecha'])); ?>
+									</td>
+									<td>
+										<?php echo $beneficiario['Comunicacione']['asunto'];?>
+									</td>
+									<td class="actions">
+										<?php echo $this->Html->link(__('Ver'), array('controller' => 'comunicaciones', 'action'=>'view', $beneficiario['Comunicacione']['id']), array('class' => 'btn btn-info btn-xs'));?>
+										<?php echo $this->Html->link(__('Editar'), array('controller' => 'comunicaciones', 'action'=>'edit', $beneficiario['Comunicacione']['id']), array('class' => 'btn btn-warning btn-xs'));?>
+										<?php echo $this->Html->link(__('Eliminar'), array('controller' => 'comunicaciones', 'action'=>'delete', $beneficiario['Comunicacione']['id']), array('class' => 'btn btn-danger btn-xs'),__('Seguro de que desea Eliminar la Comunicacion: %s', $beneficiario['Comunicacione']['numero_comuni']));?>
+									</td>
+								</tr>
+							<?php endforeach;?>
+								<tr>
+									<div class="actions">
+										<?php echo $this->Html->link(__('Nueva Comunicacion'),array('controller' => 'Comunicaciones', 'action'=>'add'), array('class' => 'btn btn-success btn-xs'));?></div>
+										<?php } ?> 
+										<?php //}endif; ?>
+									</div>
+								</tr>
+					    </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+	</div>
+</div>
+		
+
+<!--<div class="dependencias view">
 <h2><?php echo __('Dependencia'); ?></h2>
 	<dl>
 		<dt><?php echo __('Id'); ?></dt>
@@ -74,4 +138,4 @@
 			</table>
 		<?php } ?> 
 	<?php //}endif; ?>
-</div>
+</div>-->

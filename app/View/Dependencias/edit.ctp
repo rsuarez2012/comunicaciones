@@ -1,19 +1,24 @@
-<div class="dependencias form">
-<?php echo $this->Form->create('Dependencia'); ?>
-	<fieldset>
-		<legend><?php echo __('Editar Dependencia'); ?></legend>
-	<?php
-		echo $this->Form->input('id');
-		echo $this->Form->input('nombre');
-	?>
-	</fieldset>
-<?php echo $this->Form->end(__('Editar')); ?>
-</div>
-<div class="actions">
-	<h3><?php echo __('Acciones'); ?></h3>
-	<ul>
-
-		<li><?php echo $this->Form->postLink(__('Eliminar'), array('action' => 'delete', $this->Form->value('Dependencia.id')), array(), __('Seguro desea Eliminar esta Dependencia # %s?', $this->Form->value('Dependencia.id'))); ?></li>
-		<li><?php echo $this->Html->link(__('Lista Dependencias'), array('action' => 'index')); ?></li>
-	</ul>
+<div class="inner">
+	<div class="row">
+		
+	</div>
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="panel panel-default">
+				<div class="panel-heading">Editar Dependencia</div>
+				<div class="panel-body">
+				<div class="row">
+					<div class="col-lg-6">
+						<?php echo $this->Form->create('Dependencia'); ?>
+							<?php
+								echo $this->Form->input('id');
+								echo $this->Form->input('nombre', array('class'=>'form-control'));
+							?><br />
+							
+						<?php echo $this->Form->button('Editar', array('class'=>'btn btn-success'));?>
+							<?php echo $this->Form->end(); ?>
+					</div>
+					</div>
+		</div>
+	</div>
 </div>

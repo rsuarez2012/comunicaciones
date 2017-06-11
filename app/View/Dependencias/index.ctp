@@ -1,3 +1,53 @@
+<div class="panel panel-default">
+  
+    <div class="panel-heading">Dependencias&nbsp;  
+            <?php echo $this->Html->link(__('Nueva Dependencia'), array('controller' => 'dependencias', 'action'=>'add'),array('class' => 'btn btn-success btn-xs'));?>
+                
+    </div>
+        <div class="panel-body">
+        <div class="table-responsive">
+        <table id="example" class="display" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Dependencia</th>
+                        <th>Acciones</th>
+                        
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>#</th>
+                        <th>Dependencia</th>
+                        <th>Acciones</th>
+                      
+                    </tr>
+                </tfoot>
+                <tbody>
+                    <?php foreach ($dependencias as $dependencia): ?>
+            <tr>
+                <td><?php echo h($dependencia['Dependencia']['id']); ?>&nbsp;</td>
+		<td><?php echo h($dependencia['Dependencia']['nombre']); ?></td>
+                <td>
+                                                        <?php echo $this->Html->link(__('Ver'), array('action' => 'view', $dependencia['Dependencia']['id']), array('class' => 'btn btn-info btn-xs')); ?>
+                                                    <?php echo $this->Html->link(__('Editar'), array('action' => 'edit', $dependencia['Dependencia']['id']), array('class' => 'btn btn-warning btn-xs')); ?>
+                                                    <?php //echo $this->Form->postLink(__('Eliminar'), array('action' => 'delete', $dependencia['Dependencia']['id']), array('class' => 'btn btn-danger btn-xs'), array(), __('Seguro desea Eliminar el Titular #%s?', $dependencia['Dependencia']['id'])); ?>
+                                                    
+                                                    </td>
+            </tr>
+        <?php endforeach; ?>
+                    </tbody>
+    </table>
+    </div>
+    </div>
+</div>
+
+    <script>
+        $(document).ready(function() {
+            $('#example').DataTable();
+        } );
+    </script>
+
 <div class="dependencias index">
 	<h2><?php echo __('Dependencias'); ?></h2>
 	<table cellpadding="0" cellspacing="0">

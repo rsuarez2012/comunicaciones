@@ -1,17 +1,27 @@
-<div class="dependencias form">
-<?php echo $this->Form->create('Dependencia'); ?>
-	<fieldset>
-		<legend><?php echo __('Nueva Dependencia'); ?></legend>
-	<?php
-		echo $this->Form->input('nombre');
-	?>
-	</fieldset>
-<?php echo $this->Form->end(__('Guardar')); ?>
+<div class="inner">
+	<div class="row">
+		
+	</div>
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="panel panel-default">
+				<div class="panel-heading">Nueva Dependencia</div>
+				<div class="panel-body">
+				<div class="row">
+					<div class="col-lg-6">
+						<?php echo $this->Form->create('Dependencia'); ?>
+							
+						
+							<?php
+								echo $this->Form->input('nombre', array('class'=>'form-control'));
+							?><br />						
+						
+						<?php echo $this->Form->button('Guardar', array('class'=>'btn btn-success'));?>
+							<?php echo $this->Form->end(); ?>
+					</div>
+					
+				</div>
+		</div>
+	</div>
 </div>
-<div class="actions">
-	<h3><?php echo __('Acciones'); ?></h3>
-	<ul>
 
-		<li><?php echo $this->Html->link(__('Lista Dependencias'), array('action' => 'index')); ?></li>
-	</ul>
-</div>
