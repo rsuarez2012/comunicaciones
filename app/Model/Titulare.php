@@ -11,7 +11,10 @@ class Titulare extends AppModel {
  *
  * @var string
  */
-	public $displayField = 'apellidos';
+	public $virtualFields = array(
+    'name' => 'CONCAT(Titulare.cedula," ",Titulare.Apellidos, " ", Titulare.nombres)');
+
+	public $displayField = 'name';
 
 /**
  * Validation rules
