@@ -45,6 +45,9 @@
 							<?php echo $this->Form->input('fecha_nacimiento', array('label'=>false, 'dateFormat'=>'DMY', 'minYear' => date('Y')-100, 'maxYear'=>date('Y')-18), array('label'=>false));?>
 						</div>
 						<div class="form-group">
+							<?php echo $this->Form->input('edad', array('class'=>'form-control'));?>
+						</div>
+						<div class="form-group">
 							<label>Lugar de Nacimiento</label>
 							<?php echo $this->Form->input('lugar_nacimiento', array('lugar_nacimiento', 'label'=>false, 'class'=>'form-control'));?>
 						</div>
@@ -61,8 +64,8 @@
 							<?php echo $this->Form->input('direccion', array('direccion', 'label'=>false, 'class'=>'form-control'));?>
 						</div>
 						<div class="form-group">
-							<label>Tipo de Personal</label>
-							<?php echo $this->Form->input('tipo_personal', array('options'=>$perso, 'multiple'=>true, 'class'=>'form-control', 'label'=>false));?>
+							<!--<label>Tipo de Personal</label>-->
+							<?php echo $this->Form->input('tipo_personal', array('options'=>$perso,'class'=>'form-control'));?>
 						</div>
 						<div class="form-group">
 							<label>Fecha de Ingreso</label>
