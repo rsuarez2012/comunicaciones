@@ -63,11 +63,9 @@
                             <?php if(!empty($titulare['Beneficiario'])==0){ ?>
 								<?php echo ('No tiene carga Familiar, desea agregar');?>
 							<div class="actions">
-<<<<<<< HEAD
-								<?php echo $this->Html->link(__('Beneficiario?'), array('controller' => 'Beneficiarios', 'action'=>'add', $titulare['Titulare']['id']), array('target'=>'_blank','class' => 'btn btn-success btn-xs'));?></div>
-=======
+
 								<?php echo $this->Html->link(__('Beneficiario?'), array('controller' => 'Beneficiarios', 'action'=>'add', $titulare['Titulare']['id']), array('class' => 'btn btn-success btn-xs','target' => '_blank'));?></div>
->>>>>>> 6ee08267b15d61f0a49cc3c2d28574cd5f3371f8
+
 								<?php }else{ ?>
 								<div class="titulares view">
 								<h4><?php echo __('Beneficiarios'); ?></h4>
@@ -111,11 +109,9 @@
 											<?php endforeach;?>
 											<tr>
 												<div class="actions">
-<<<<<<< HEAD
+
 													<?php echo $this->Html->link(__('Agregar Beneficiario'), array('controller' => 'Beneficiarios', 'action'=>'add', $titulare['Titulare']['id']), array('target'=>'_blank', 'class' => 'btn btn-success btn-xs'));?></div>
-=======
-													<?php echo $this->Html->link(__('Agregar Beneficiario'), array('controller' => 'Beneficiarios', 'action'=>'add', $titulare['Titulare']['id']), array('class' => 'btn btn-success btn-xs','target' => '_blank'));?></div>
->>>>>>> 6ee08267b15d61f0a49cc3c2d28574cd5f3371f8
+
 											
 														<?php } ?> 
 													<?php //}endif; ?>
