@@ -63,7 +63,7 @@
                             <?php if(!empty($titulare['Beneficiario'])==0){ ?>
 								<?php echo ('No tiene carga Familiar, desea agregar');?>
 							<div class="actions">
-								<?php echo $this->Html->link(__('Beneficiario?'), array('controller' => 'Beneficiarios', 'action'=>'add', $titulare['Titulare']['id']), array('class' => 'btn btn-success btn-xs'));?></div>
+								<?php echo $this->Html->link(__('Beneficiario?'), array('controller' => 'Beneficiarios', 'action'=>'add', $titulare['Titulare']['id']), array('class' => 'btn btn-success btn-xs','target' => '_blank'));?></div>
 								<?php }else{ ?>
 								<div class="titulares view">
 								<h4><?php echo __('Beneficiarios'); ?></h4>
@@ -107,7 +107,7 @@
 											<?php endforeach;?>
 											<tr>
 												<div class="actions">
-													<?php echo $this->Html->link(__('Agregar Beneficiario'), array('controller' => 'Beneficiarios', 'action'=>'add', $titulare['Titulare']['id']), array('class' => 'btn btn-success btn-xs'));?></div>
+													<?php echo $this->Html->link(__('Agregar Beneficiario'), array('controller' => 'Beneficiarios', 'action'=>'add', $titulare['Titulare']['id']), array('class' => 'btn btn-success btn-xs','target' => '_blank'));?></div>
 											
 														<?php } ?> 
 													<?php //}endif; ?>
