@@ -64,8 +64,13 @@
 							<?php echo $this->Form->input('direccion', array('direccion', 'label'=>false, 'class'=>'form-control'));?>
 						</div>
 						<div class="form-group">
+<<<<<<< HEAD
 							<!--<label>Tipo de Personal</label>-->
 							<?php echo $this->Form->input('tipo_personal', array('options'=>$perso,'class'=>'form-control'));?>
+=======
+							<label>Tipo de Personal</label>
+							<?php echo $this->Form->input('tipo_personal', array('options'=>$perso, 'class'=>'form-control', 'label'=>false));?>
+>>>>>>> 6ee08267b15d61f0a49cc3c2d28574cd5f3371f8
 						</div>
 						<div class="form-group">
 							<label>Fecha de Ingreso</label>
