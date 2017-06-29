@@ -12,8 +12,8 @@
 <div class="panel panel-info">
   <!-- Default panel contents -->
   <div class="panel-heading">
-  	<?php echo h($titulare['Titulare']['cedula'].' '.h($titulare['Titulare']['apellidos']).', '.h($titulare['Titulare']['nombres'])); ?>
-  		<div class="actions" style="aling:center;" aling="center">
+  	<h3><?php echo h($titulare['Titulare']['cedula'].' '.h($titulare['Titulare']['apellidos']).', '.h($titulare['Titulare']['nombres'])); ?></h3>
+    <div class="actions" style="aling:center;" aling="center">
 					
 			<?php echo $this->Html->link(__('Editar Titular'), array('action' => 'edit', $titulare['Titulare']['id']),array('class'=>'btn btn-warning btn-xs')); ?>&nbsp;
 			<?php echo $this->Form->postLink(__('Eliminar Titular'), array('action' => 'delete', $titulare['Titulare']['id']), array('class'=>'btn btn-danger btn-xs'), __('Seguro desea eliminar # %s?', $titulare['Titulare']['id'])); ?>
