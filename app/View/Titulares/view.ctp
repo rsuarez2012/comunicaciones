@@ -75,10 +75,10 @@
 								<?php echo ('No tiene carga Familiar, desea agregar');?>
 							<div class="actions">
 
-								<?php echo $this->Html->link(__('Beneficiario?'), array('controller' => 'Beneficiarios', 'action'=>'add', $titulare['Titulare']['id']), array('class' => 'btn btn-success btn-xs','target' => '_blank'));?>
+								<?php //echo $this->Html->link(__('Beneficiario?'), array('controller' => 'Beneficiarios', 'action'=>'add', $titulare['Titulare']['id']), array('class' => 'btn btn-success btn-xs','target' => '_blank'));?>
             
-                                <button type="button" id="nuevo">Nuevo</button>                        
-                                </div>
+                <button type="button" id="nuevo" class="btn btn-success btn-xs">Agregar Beneficiario</button>
+              </div>
 
 								<?php }else{ ?>
 								<div class="titulares view">
@@ -122,77 +122,74 @@
 											<tr>
 												<div class="actions">
 
-													<?php echo $this->Html->link(__('Agregar Beneficiario'), array('controller' => 'Beneficiarios', 'action'=>'add', $titulare['Titulare']['id']), array('target'=>'_blank', 'class' => 'btn btn-success btn-xs'));?></div>
-
+													<?php //echo $this->Html->link(__('Agregar Beneficiario'), array('controller' => 'Beneficiarios', 'action'=>'add', $titulare['Titulare']['id']), array('target'=>'_blank', 'class' => 'btn btn-success btn-xs'));?></div>
+                            <button type="button" id="nuevo" class="btn btn-success btn-xs">Agregar Beneficiario</button> 
 											
 														<?php } ?> 
 													<?php //}endif; ?>
-                                                    <button type="button" id="nuevo">Nuevo</button>                        
+                                                 
 												</div>
 											</tr>
-										
-
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-
-  </div>
-
-<?php echo $this->Form->create('Beneficiario',['url'=>['controller'=>'Beneficiarios','action'=>'add']]);?>
-<div class="modal fade" id="modal-nuevo">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title">Nuevo Beneficiario</h4>
-            </div>
-
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-md-12">
-                        <?php //echo $this->Form->create('Beneficiario',['controller'=>'beneficiarios', 'action'=>'add']); ?>
-            <?php //echo $this->Form->hidden('titulare_id',['name'=>'$titulare[Titulare][id]']);?>
-
-            <?php echo $this->Form->create('Beneficiario',['url'=>['controller'=>'beneficiarios', 'action'=>'add']]); ?>
-             <?php //echo $this->Form->input('titulare_id', array('type' => 'hidden','value' => $titulare_id));?>
-  <input type="hidden" name="data[Beneficiario][titulare_id]" value="<?php echo $titulare['Titulare']['id']?>">
-  
-            <div class="form-group">
-              <label>Cedula</label>
-              <?php echo $this->Form->input('cedula', array('cedula', 'label'=>false, 'class'=>'form-control'));?>
-            </div>
-            <div class="form-group">
-              <label>Apellidos</label>
-              <?php echo $this->Form->input('apellidos', array('apellidos', 'label'=>false, 'class'=>'form-control'));?>
-            </div>
-            <div class="form-group">
-              <label>Nombres</label>
-              <?php echo $this->Form->input('nombres', array('nombres', 'label'=>false, 'class'=>'form-control'));?>
-            </div>
-            <div class="form-group">
-              <label>Fecha Nacimiento</label>
-              <?php echo $this->Form->input('fecha_nacimiento', array('label'=>false, 'dateFormat'=>'DMY', 'minYear' => date('Y')-100, 'maxYear'=>date('Y')-0), array('label'=>false));?>
-            </div>
-            <div class="form-group">
-              <label>Parentesco</label>
-              <?php echo $this->Form->input('parentesco',array('label' => false, 'class'=>'form-control', 'options'=>$parentesco));?>
-            </div>
-            
-            <?php ///echo $this->Form->button('Guardar', array('class'=>'btn btn-success'));?>
-            
-                    </div>
+                    </tbody>
+                  </table>
                 </div>
+              </div>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-success" id="new">Guardar</button>
-            </div>
-        </div>
-    </div>
+
 </div>
-<?php echo $this->Form->end();?>
+
+      <?php echo $this->Form->create('Beneficiario',['url'=>['controller'=>'Beneficiarios','action'=>'add']]);?>
+      <div class="modal fade" id="modal-nuevo">
+          <div class="modal-dialog">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                      <h4 class="modal-title">Nuevo Beneficiario</h4>
+                  </div>
+
+                  <div class="modal-body">
+                      <div class="row">
+                          <div class="col-md-12">
+                              <?php //echo $this->Form->create('Beneficiario',['controller'=>'beneficiarios', 'action'=>'add']); ?>
+                  <?php //echo $this->Form->hidden('titulare_id',['name'=>'$titulare[Titulare][id]']);?>
+
+                  <?php echo $this->Form->create('Beneficiario',['url'=>['controller'=>'beneficiarios', 'action'=>'add']]); ?>
+                   <?php //echo $this->Form->input('titulare_id', array('type' => 'hidden','value' => $titulare_id));?>
+        <input type="hidden" name="data[Beneficiario][titulare_id]" value="<?php echo $titulare['Titulare']['id']?>">
+        
+                  <div class="form-group">
+                    <label>Cedula</label>
+                    <?php echo $this->Form->input('cedula', array('cedula', 'label'=>false, 'class'=>'form-control'));?>
+                  </div>
+                  <div class="form-group">
+                    <label>Apellidos</label>
+                    <?php echo $this->Form->input('apellidos', array('apellidos', 'label'=>false, 'class'=>'form-control'));?>
+                  </div>
+                  <div class="form-group">
+                    <label>Nombres</label>
+                    <?php echo $this->Form->input('nombres', array('nombres', 'label'=>false, 'class'=>'form-control'));?>
+                  </div>
+                  <div class="form-group">
+                    <label>Fecha Nacimiento</label>
+                    <?php echo $this->Form->input('fecha_nacimiento', array('label'=>false, 'dateFormat'=>'DMY', 'minYear' => date('Y')-100, 'maxYear'=>date('Y')-0), array('label'=>false));?>
+                  </div>
+                  <div class="form-group">
+                    <label>Parentesco</label>
+                    <?php echo $this->Form->input('parentesco',array('label' => false, 'class'=>'form-control', 'options'=>$parentesco));?>
+                  </div>
+        
+                  
+                          </div>
+                      </div>
+                  </div>
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                      <button type="submit" class="btn btn-success" id="new">Guardar</button>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <?php echo $this->Form->end();?>
 <div id="resultado"></div>
 <script type="text/javascript">
 $('#nuevo').click(function () {
