@@ -122,4 +122,12 @@ class TitularesController extends AppController {
 		}
 		return $this->redirect(array('action' => 'index'));
 	}
+	public function return_data(){
+		$id = $this->data['id'];
+		//debug($id);//pasar para ver si capta el id
+		$data = $this->Titulare->find('all',['conditions'=>['Titulare.id'=>$id]]);
+		//$debug($data);exit;
+		echo json_encode($data);
+		$this->autoRender = false;
+	}
 }

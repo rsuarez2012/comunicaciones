@@ -25,12 +25,13 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 		<?php echo $cakeDescription ?>:
 		<?php echo $this->fetch('title'); ?>
 	</title>
-	
+	<?= $this->Html->script('jquery-2.0.3.min');?>
+	<?= $this->Html->script('app/app.js');?>
 	<?php
 		echo $this->Html->meta('icon');
 
 		echo $this->Html->css(array('jquery.dataTables.min', 'magic','login','bootstrap', 'main', 'theme', 'MoneAdmin','layout2', 'dataTables.bootstrap'));
-		echo $this->Html->script(array('jquery','jquery-1.12.4','jquery.dataTables.min','jquery-2.0.3.min', 'login','bootstrap', 'dataTables/dataTables.bootstrap', 'dataTables/jquery.dataTables'));
+		echo $this->Html->script(array('jquery','jquery-1.12.4','jquery.dataTables.min', 'login','bootstrap', 'dataTables/dataTables.bootstrap', 'dataTables/jquery.dataTables'));
 
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
@@ -163,6 +164,10 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 			</p>
 		</div>-->
 	<!--</div>-->
-	<?php echo $this->element('sql_dump'); ?>
+	<script type="text/javascript">
+		var URL_BASE = "<?php echo Router::url('/')?>";
+		var controller = "<?php echo $this->fetch('title');?>";
+	</script>
+	<?php //echo $this->element('sql_dump'); ?>
 </body>
 </html>

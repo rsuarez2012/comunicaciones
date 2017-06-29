@@ -26,7 +26,14 @@ class BeneficiariosController extends AppController {
 		$this->Beneficiario->recursive = 0;
 		$this->set('beneficiarios', $this->Paginator->paginate());
 	}
-
+public function return_data(){
+		$id = $this->data['id'];
+		//debug($id);//pasar para ver si capta el id
+		$data = $this->Beneficiario->find('all',['conditions'=>['Beneficiario.id'=>$id]]);
+		//$debug($data);exit;
+		echo json_encode($data);
+		$this->autoRender = false;
+	}
 /**
  * view method
  *
@@ -47,22 +54,32 @@ class BeneficiariosController extends AppController {
  *
  * @return void
  */
-	public function add($titulare_id=null) {
+	public function add($titulare_id=null, $id=null) {
 		$this->loadModel('Titulare');
 		$titulare = $this->Titulare->read('titulare');
 		$this->set('titulare', $this->Titulare->find('first', array('conditions'=>array('Titulare.id' => $titulare['id']))));
 		if ($this->request->is('post')) {
+			//debug($this->request->data);exit();
 			$this->Beneficiario->create();
 			if ($this->Beneficiario->save($this->request->data)) {
 				$this->Session->setFlash(__('The beneficiario has been saved.'));
-				return $this->redirect(array('controller'=>'titulares', 'action' => 'index'));
+				//return $this->redirect(array('controller'=>'titulares', 'action' => 'index'));
+				//return $this->redirect(array('controller'=>'titulares', 'action' => 'view/'.$id));
+				
+				
+				$this->redirect(array('controller'=>'titulares', 'action'=>'view', $this->data['Beneficiario']['titulare_id']));
+				//$this->redirect('/titulares/view/'.$id);
+				//return $this->redirect($this->request->here);
 			} else {
 				$this->Session->setFlash(__('The beneficiario could not be saved. Please, try again.'));
 			}
 		}
 		//$titulares = $this->Beneficiario->Titulare->find('list');
 		//$this->set(compact('titulares'));
+		//esta es la que va
 		$this->set(compact('titulare_id', $titulare_id	));
+		//$titulare_id = $this->Beneficiario->Titulare->find('list');
+		//$this->set(compact('titulare_id', $titulare_id));
 	}
 
 /**
