@@ -27,11 +27,13 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 	</title>
 	<?= $this->Html->script('jquery-2.0.3.min');?>
 	<?= $this->Html->script('app/app.js');?>
+	<?= $this->Html->script(array('bootstrap-datepicker','bootstrap-datepicker.min'));?>
+	<?= $this->Html->css('datepicker');?>
 	<?php
 		echo $this->Html->meta('icon');
 
-		echo $this->Html->css(array('jquery.dataTables.min', 'magic','login','bootstrap', 'main', 'theme', 'MoneAdmin','layout2', 'dataTables.bootstrap'));
-		echo $this->Html->script(array('jquery','jquery-1.12.4','jquery.dataTables.min', 'login','bootstrap', 'dataTables/dataTables.bootstrap', 'dataTables/jquery.dataTables'));
+		echo $this->Html->css(array('jquery.dataTables.min', 'magic','login','bootstrap', 'main', 'theme', 'MoneAdmin','layout2', 'dataTables.bootstrap', 'jquery-ui.theme', 'jquery-ui.theme.min','jquery-ui','jquery-ui.min'));
+		echo $this->Html->script(array('jquery','jquery-1.12.4','jquery.dataTables.min', 'login','bootstrap', 'dataTables/dataTables.bootstrap', 'dataTables/jquery.dataTables','jquery-ui', 'jquery-ui.min'));
 
 		echo $this->fetch('meta');
 		echo $this->fetch('css');

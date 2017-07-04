@@ -27,6 +27,7 @@ class BeneficiariosController extends AppController {
 		$this->set('beneficiarios', $this->Paginator->paginate());
 	}
 public function return_data(){
+		$this->loadModel('Titulare');
 		$id = $this->data['id'];
 		//debug($id);//pasar para ver si capta el id
 		$data = $this->Beneficiario->find('all',['conditions'=>['Beneficiario.id'=>$id]]);
@@ -62,7 +63,7 @@ public function return_data(){
 			//debug($this->request->data);exit();
 			$this->Beneficiario->create();
 			if ($this->Beneficiario->save($this->request->data)) {
-				$this->Session->setFlash(__('The beneficiario has been saved.'));
+				$this->Session->setFlash('Beneficiario guardado con Exito.', 'msg_success');
 				//return $this->redirect(array('controller'=>'titulares', 'action' => 'index'));
 				//return $this->redirect(array('controller'=>'titulares', 'action' => 'view/'.$id));
 				
@@ -71,7 +72,7 @@ public function return_data(){
 				//$this->redirect('/titulares/view/'.$id);
 				//return $this->redirect($this->request->here);
 			} else {
-				$this->Session->setFlash(__('The beneficiario could not be saved. Please, try again.'));
+				$this->Session->setFlash('El beneficiario no se pudo guardar. Por favor, Intente de nuevo.', 'msg_error');
 			}
 		}
 		//$titulares = $this->Beneficiario->Titulare->find('list');
@@ -89,16 +90,40 @@ public function return_data(){
  * @param string $id
  * @return void
  */
+	/*public function return_data(){
+			$id = $this->data['id'];
+			//debug($id);//pasar para ver si capta el id
+			$data = $this->Beneficiario->find('all',['conditions'=>['Beneficiario.id'=>$id]]);
+			//$debug($data);exit;
+			echo json_encode($data);
+			$this->autoRender = false;
+	}*/
 	public function edit($id = null, $titulare_id=null) {
+		$this->loadModel('Titulare');
+		$id=$this->request->data['Beneficiario']['id'];		
 		if (!$this->Beneficiario->exists($id)) {
+			throw new NotFoundException(__('Invalid Cliente'));
+		}
+		if ($this->request->is(array('post', 'put'))) {
+			if ($this->Beneficiario->save($this->request->data)) {
+				$this->Session->setFlash('The beneficiario has been saved.','msg_success');				return $this->redirect(array('controller'=>'titulares', 'action' => 'view', $this->data['Beneficiario']['titulare_id']));
+			} else {
+				$this->Session->setFlash(__('The beneficiario could not be saved. Please, try again.'));
+				
+				return $this->redirect(array('controller'=>'titulares', 'action'=>'view', $this->data['Beneficiario']['titulare_id']));
+			}
+		} 
+		echo json_encode($result);
+		$this->autoRender = false;
+		/*if (!$this->Beneficiario->exists($id)) {
 			throw new NotFoundException(__('Invalid beneficiario'));
 		}
 		if ($this->request->is(array('post', 'put'))) {
 			if ($this->Beneficiario->save($this->request->data)) {
 				$this->Session->setFlash('The beneficiario has been saved.','msg_success');
 				//$this->Flash->msg_success(__('Beneficiario Editado con exito.'),'msg_success');
-				//return $this->redirect(array('controller'=>'titulares', 'action' => 'index'));
-				$this->redirect(array('controller'=>'titulares', 'action'=>'view', $this->data['Beneficiario']['titulare_id']));
+				return $this->redirect(array('controller'=>'titulares', 'action' => 'index'));
+				//$this->redirect(array('controller'=>'titulares', 'action'=>'view', $this->data['Beneficiario']['titulare_id']));
 			} else {
 				$this->Session->setFlash(__('The beneficiario could not be saved. Please, try again.'));
 			}
@@ -107,7 +132,10 @@ public function return_data(){
 			$this->request->data = $this->Beneficiario->find('first', $options);
 		}
 		$titulares = $this->Beneficiario->Titulare->find('list');
-		$this->set(compact('titulares', 'titulare_id', $titulare_id));
+		$this->set(compact('titulares', 'titulare_id', $titulare_id));*/
+		//echo json_encode($result);
+		//$this->autoRender=false;
+		//$this->set('titulares');
 	}
 
 /**
@@ -125,10 +153,10 @@ public function return_data(){
 		//$this->request->allowMethod('post', 'delete');
 		$this->request->allowMethod('get', 'delete');
 		if ($this->Beneficiario->delete()) {
-			$this->Session->setFlash(__('The beneficiario has been deleted.'));
+			$this->Session->setFlash('El Beneficiario fue eliminado con exito.', 'msg_success');
 			return $this->redirect(array('controller'=>'titulares', 'action'=>'index'));
 		} else {
-			$this->Session->setFlash(__('The beneficiario could not be deleted. Please, try again.'));
+			$this->Session->setFlash('El beneficiario no se pudo eliminar. Por favor, intente de nuevo.', 'msg_error');
 		}
 		return $this->redirect(array('action' => 'index'));
 	}

@@ -20,6 +20,7 @@
 		</div>
   			
   </div>
+</div>
   <div class="tab-content">
 
   	<table class="table">
@@ -72,72 +73,58 @@
 		<div class="panel panel-warning">
                         <div class="panel-heading">
                             <?php if(!empty($titulare['Beneficiario'])==0){ ?>
-								<?php echo ('No tiene carga Familiar, desea agregar');?>
-							<div class="actions">
+								              <?php echo ('No tiene carga Familiar, desea agregar');?>
+                      						<div class="actions">
 
-								<?php //echo $this->Html->link(__('Beneficiario?'), array('controller' => 'Beneficiarios', 'action'=>'add', $titulare['Titulare']['id']), array('class' => 'btn btn-success btn-xs','target' => '_blank'));?>
-            
-                <button type="button" id="nuevo" class="btn btn-success btn-xs">Agregar Beneficiario</button>
-              </div>
-
-								<?php }else{ ?>
-								<div class="titulares view">
-								<h4><?php echo __('Beneficiarios'); ?></h4>
-							</div>
+                      							<?php //echo $this->Html->link(__('Beneficiario?'), array('controller' => 'Beneficiarios', 'action'=>'add', $titulare['Titulare']['id']), array('class' => 'btn btn-success btn-xs','target' => '_blank'));?>
+                                  
+                                    <button type="button" id="nuevo" class="btn btn-success btn-xs">Agregar Beneficiario</button>
+                                  </div>
+                                  <?php }else{ ?>
+                                    <div class="titulares view">
+                                      <h4><?php echo __('Beneficiarios'); ?></h4>
+                                    </div>
+                                    <button type="button" id="nuevo" class="btn btn-success btn-xs">Agregar Beneficiario</button> 
+                      
+                                  <button type="button" id="editar" class="btn btn-warning btn-xs">EDITAR</button>      				
                         </div>
-                        <div class="panel-body">
-                            <div class="table-responsive">
-                                <table class="table" id="tab">
-                                    <thead>
+                              
+                                <div class="panel-body">
+                                  <div class="table-responsive">
+                                    <table id="example" width="100%">
+                                      <thead>
                                         <tr>
-                                            <th>#</th>
-                                            <th>Cedula</th>
-                                            <th>Nombres</th>
-                                            <th>Fecha Nacimiento</th>
-                                            <th>Parentesco</th>
-                                            <th>Acciones</th>
+                                          <th>#</th>
+                                          <th>Cedula</th>
+                                          <th>Nombres</th>
+                                          <th>Fecha Nacimiento</th>
+                                          <th>Parentesco</th>
+                                          <!--<th>Acciones</th>-->
                                         </tr>
-                                    </thead>
-                                    <tbody>
-                                    	<?php foreach ($titulare['Beneficiario'] as $beneficiario): ?>
-	                                        <tr class="success">
-	                                         
-						
-												<td><?php echo $beneficiario['id'];?></td>
-												<td><?php echo $beneficiario['cedula'];?></td>
-												<td><?php echo $beneficiario['apellidos'].', '.$beneficiario['nombres'];?></td>
-												
-												<td><?php echo date("d-m-Y", strtotime($beneficiario['fecha_nacimiento']));?></td>
-												<td><?php echo $beneficiario['parentesco'];?></td>
-												<td class="actions">
-													<?php //echo $this->Html->link(__('Ver'), array('controller' => 'Beneficiarios', 'action'=>'view', $beneficiario['id']), array('class' => 'btn btn-info btn-xs'));?>
-                                                    
-													<?php echo $this->Html->link(__('Editar'), array('controller' => 'Beneficiarios', 'action'=>'edit', $beneficiario['id']), array('class' => 'btn btn-warning btn-xs','id'=>'edit'));?>
+                                      </thead>
+                                      <tbody>
+                                      <?php foreach ($titulare['Beneficiario'] as $beneficiario): ?>
 
-													<?php echo $this->Html->link(__('Eliminar'), array('controller' => 'Beneficiarios', 'action'=>'delete', $beneficiario['id']), array('class' => 'btn btn-danger btn-xs'),__('Seguro de que desea Eliminar el Beneficiario: %s', $beneficiario['apellidos']. ' '.$beneficiario['nombres']));?>
- 
-												</td>
-											</tr>
-											<?php endforeach;?>
-											<tr>
-												<div class="actions">
+                                        <tr>
+                                          <td><?php echo $beneficiario['id'];?></td>
+                                          <td><?php echo $beneficiario['cedula'];?></td>
+                                          <td><?php echo $beneficiario['apellidos'].', '.$beneficiario['nombres'];?>
+                                          </td>
+                                          <td><?php echo $beneficiario['fecha_nacimiento'];?></td>
+                                          <td><?php echo $beneficiario['parentesco'];?></td>
 
-													<?php //echo $this->Html->link(__('Agregar Beneficiario'), array('controller' => 'Beneficiarios', 'action'=>'add', $titulare['Titulare']['id']), array('target'=>'_blank', 'class' => 'btn btn-success btn-xs'));?></div>
-                            <button type="button" id="nuevo" class="btn btn-success btn-xs">Agregar Beneficiario</button> 
-											
-														<?php } ?> 
-													<?php //}endif; ?>
-                                                 
-												</div>
-											</tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
+                                        </tr>
+                                      <?php endforeach;?>
 
-</div>
+                                      </tbody>
+                                    </table>
+                                  </div>
+                                </div>                       
+                              <?php } ?>
+                              
 
+
+                            <!--Formulario de agregar un nuevo Beneficiario-->
       <?php echo $this->Form->create('Beneficiario',['url'=>['controller'=>'Beneficiarios','action'=>'add']]);?>
       <div class="modal fade" id="modal-nuevo">
           <div class="modal-dialog">
@@ -171,7 +158,8 @@
                   </div>
                   <div class="form-group">
                     <label>Fecha Nacimiento</label>
-                    <?php echo $this->Form->input('fecha_nacimiento', array('label'=>false, 'dateFormat'=>'DMY', 'minYear' => date('Y')-100, 'maxYear'=>date('Y')-0), array('label'=>false));?>
+                    <?php //echo $this->Form->input('fecha_nacimiento', array('label'=>false, 'dateFormat'=>'DMY', 'minYear' => date('Y')-100, 'maxYear'=>date('Y')-0), array('label'=>false));?>
+                    <?php echo $this->Form->date('fecha_nacimiento', array('label'=>false,'class'=>'form-control','type'=>'text', 'id'=>'dp2'));?>
                   </div>
                   <div class="form-group">
                     <label>Parentesco</label>
@@ -190,8 +178,68 @@
           </div>
       </div>
       <?php echo $this->Form->end();?>
+      <!--Final del formulario de agregar Beneficiario-->
+      
+      <div class="modal fade" id="modal-editar">
+          <div class="modal-dialog">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                      <h4 class="modal-title">Nuevo Beneficiario</h4>
+                  </div>
+
+                  <div class="modal-body">
+                      <div class="row">
+                        <div class="col-md-12">
+                          <?php echo $this->Form->create('Beneficiario',['url'=>['controller'=>'beneficiarios', 'action'=>'edit']]); ?>
+                            <?php echo $this->Form->hidden('id',array('id'=>'id'));?>
+
+                  <?php //echo $this->Form->create('Beneficiario',['url'=>['controller'=>'beneficiarios', 'action'=>'add']]); ?>
+                   <?php //echo $this->Form->input('titulare_id', array('type' => 'hidden','value' => $titulare_id));?>
+        <div class="form-group">
+              <label>Cedula</label>
+              <?php echo $this->Form->input('cedula', array('cedula', 'label'=>false, 'class'=>'form-control', 'id'=>'cedula'));?>
+            </div>
+            <div class="form-group">
+              <label>Apellidos</label>
+              <?php echo $this->Form->input('apellidos', array('apellidos', 'label'=>false, 'class'=>'form-control', 'id'=>'apellidos'));?>
+            </div>
+            <div class="form-group">
+              <label>Nombres</label>
+              <?php echo $this->Form->input('nombres', array('nombres', 'label'=>false, 'class'=>'form-control', 'id'=>'nombres'));?>
+            </div>
+            <div class="form-group">
+              <label>Fecha Nacimiento</label>
+              <?php //echo $this->Form->input('fecha_nacimiento', array('label'=>false,'dateFormat'=>'DMY', 'minYear' => date('Y')-100, 'maxYear'=>date('Y')-0), array('id'=>'fecha'));?>
+              
+              <?php echo $this->Form->date('fecha_nacimiento', array('label'=>false,'class'=>'form-control','type'=>'text', 'id'=>'dp1'));?>
+
+            </div>
+            <div class="form-group">
+              <label>Parentesco</label>
+              <?php echo $this->Form->input('parentesco',array('label' => false, 'class'=>'form-control', 'id'=>'parentesco', 'options'=>$parentesco));?>
+            </div>
+            <div class="form-group">
+              <!--<label>Titular</label>-->
+              <?php echo $this->Form->input('titulare_id',array('label' => false, 'type'=>'hidden','class'=>'form-control','id'=>'titu'));?>
+            </div>
+        
+                  
+                          </div>
+                      </div>
+                  </div>
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                      <button type="submit" class="btn btn-success" id="new">Guardar</button>
+                  </div>
+              </div>
+          </div>
+      <?php echo $this->Form->end();?>
+
+      </div>
 <div id="resultado"></div>
 <script type="text/javascript">
+$('#example').DataTable();
 $('#nuevo').click(function () {
     var $titulare_id = '<?php echo $titulare['Titulare']['id']?>';
      $('#modal-nuevo').modal('show');
@@ -217,6 +265,54 @@ $('#nuevo').click(function () {
       });  
       return false;
     });
-    
+ 
+var table = $('#example').DataTable();
+
+$('#example').on('click', 'tr', function(){
+  if($(this).hasClass('selected')){
+    $(this).removeClass('selected');  
+  }else{
+    table.$('tr.selected').removeClass('selected');
+    $(this).addClass('selected');   
+  }
+
+});
+$('#editar').click(function() {
+  var $titulare_id = '<?php echo $titulare['Titulare']['id']?>';
+  var bene = $('#example tbody tr.selected td:first').text();
+  if(id){
+    $.ajax({
+      url: URL_BASE  + 'beneficiarios/return_data',
+      type: 'POST',
+      dataType:'json',
+      data:{id:bene},
+      success: function(data){
+        //console.log(data);
+        
+        $('#id').val(data[0].Beneficiario.id);
+        $('#cedula').val(data[0].Beneficiario.cedula);
+        $('#apellidos').val(data[0].Beneficiario.apellidos);
+        $('#nombres').val(data[0].Beneficiario.nombres);
+        $('#parentesco').val(data[0].Beneficiario.parentesco);
+        $('#dp1').val(data[0].Beneficiario.fecha_nacimiento);
+        $('#titu').val(data[0].Beneficiario.titulare_id);
+
+        $('#modal-editar').modal('show');
+
+      }
+
+    })
+  }else{
+      alert("Debe Seleccionar un Beneficiario");
+   }
+});
+   //datepicker
+
+$('#dp1').datepicker({
+  dateFormat: "yy-mm-dd"
+});
+$('#dp2').datepicker({
+  dateFormat: "yy-mm-dd"
+});    
 
 </script>
