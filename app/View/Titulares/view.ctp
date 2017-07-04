@@ -84,9 +84,10 @@
                                     <div class="titulares view">
                                       <h4><?php echo __('Beneficiarios'); ?></h4>
                                     </div>
-                                    <button type="button" id="nuevo" class="btn btn-success btn-xs">Agregar Beneficiario</button> 
+                                    <button type="button" id="nuevo" class="btn btn-success btn-xs">AGREGAR BENEFICIARIO</button> 
                       
-                                  <button type="button" id="editar" class="btn btn-warning btn-xs">EDITAR</button>      				
+                                  <button type="button" id="editar" class="btn btn-warning btn-xs">EDITAR</button>              
+                                  <button type="button" id="eliminar" class="btn btn-danger btn-xs">ELIMINAR</button>              
                         </div>
                               
                                 <div class="panel-body">
@@ -301,10 +302,29 @@ $('#editar').click(function() {
 
       }
 
-    })
+    });
   }else{
       alert("Debe Seleccionar un Beneficiario");
    }
+});
+$('#eliminar').click(function(){
+  var id = $('#example tbody tr.selected td:first').text();
+  //alert('id');
+  if(id){
+    $.ajax({
+      url: URL_BASE +'beneficiarios/eliminar/'+id,
+      type: 'POST',
+      dataType: 'json',
+      data: {id: id},
+      success: function(data){
+        //Formulario(data);     
+        alert(data);
+        location.reload(true);
+      }
+    })
+  }else{
+    alert('Seleccione un registro');  
+  }
 });
    //datepicker
 

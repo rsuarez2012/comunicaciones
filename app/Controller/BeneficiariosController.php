@@ -145,6 +145,19 @@ public function return_data(){
  * @param string $id
  * @return void
  */
+	public function eliminar($id=null){
+		$id = $this->data['id'];
+		//$estado = 'I';
+		$datanew = array('id'=>$id);
+		//$this->Beneficiario->create();
+		if($this->Beneficiario->delete($datanew)){
+			$result = "Registro Eliminado";
+		}else{
+			$result = "A ocurrido un error";		
+		}
+		echo json_encode($result);
+		$this->autoRender=false;
+	}
 	public function delete($id = null) {
 		$this->Beneficiario->id = $id;
 		if (!$this->Beneficiario->exists()) {
@@ -154,10 +167,11 @@ public function return_data(){
 		$this->request->allowMethod('get', 'delete');
 		if ($this->Beneficiario->delete()) {
 			$this->Session->setFlash('El Beneficiario fue eliminado con exito.', 'msg_success');
-			return $this->redirect(array('controller'=>'titulares', 'action'=>'index'));
+			//return $this->redirect(array('controller'=>'titulares', 'action'=>'index'));
 		} else {
 			$this->Session->setFlash('El beneficiario no se pudo eliminar. Por favor, intente de nuevo.', 'msg_error');
 		}
-		return $this->redirect(array('action' => 'index'));
+		//return $this->redirect(array('action' => 'index'));
+		$this->autoRender=false;
 	}
 }
