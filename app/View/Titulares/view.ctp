@@ -111,7 +111,7 @@
                                           <td><?php echo $beneficiario['cedula'];?></td>
                                           <td><?php echo $beneficiario['apellidos'].', '.$beneficiario['nombres'];?>
                                           </td>
-                                          <td><?php echo $beneficiario['fecha_nacimiento'];?></td>
+                                          <td><?php echo date("d-m-Y", strtotime($beneficiario['fecha_nacimiento']));?></td>
                                           <td><?php echo $beneficiario['parentesco'];?></td>
 
                                         </tr>
@@ -181,12 +181,12 @@
       <?php echo $this->Form->end();?>
       <!--Final del formulario de agregar Beneficiario-->
       
-      <div class="modal fade" id="modal-editar">
+      <div class="modal fade" id="modal-editar" style="display:none">
           <div class="modal-dialog">
               <div class="modal-content">
                   <div class="modal-header">
                       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                      <h4 class="modal-title">Nuevo Beneficiario</h4>
+                      <h4 class="modal-title">Editar Beneficiario</h4>
                   </div>
 
                   <div class="modal-body">
@@ -213,7 +213,18 @@
               <label>Fecha Nacimiento</label>
               <?php //echo $this->Form->input('fecha_nacimiento', array('label'=>false,'dateFormat'=>'DMY', 'minYear' => date('Y')-100, 'maxYear'=>date('Y')-0), array('id'=>'fecha'));?>
               
-              <?php echo $this->Form->date('fecha_nacimiento', array('label'=>false,'class'=>'form-control','type'=>'text', 'id'=>'dp1'));?>
+              <?php //echo $this->Form->date('fecha_nacimiento', array('label'=>false,'class'=>'form-control','type'=>'text', 'id'=>'dp1'));?>
+
+              <?php echo $this->Form->date('fecha_nacimiento', array('label'=>false,'class'=>'form-control datepicker','type'=>'text', 'id'=>'datepicker'));?>
+              <div>
+                <?php //echo $this->Form->input('fecha_nacimiento', array('label'=>false,'class'=>'form-control','type'=>'text','autocomplete'=>false, 'id'=>'dp1', 'style'=>'none'));?>
+                
+                <!--<input class="datepicker" id="" type="text" name="">-->
+                      
+                
+
+              </div>  
+    
 
             </div>
             <div class="form-group">
@@ -240,6 +251,7 @@
       </div>
 <div id="resultado"></div>
 <script type="text/javascript">
+
 $('#example').DataTable();
 $('#nuevo').click(function () {
     var $titulare_id = '<?php echo $titulare['Titulare']['id']?>';
@@ -295,7 +307,7 @@ $('#editar').click(function() {
         $('#apellidos').val(data[0].Beneficiario.apellidos);
         $('#nombres').val(data[0].Beneficiario.nombres);
         $('#parentesco').val(data[0].Beneficiario.parentesco);
-        $('#dp1').val(data[0].Beneficiario.fecha_nacimiento);
+        $('#datepicker').val(data[0].Beneficiario.fecha_nacimiento);
         $('#titu').val(data[0].Beneficiario.titulare_id);
 
         $('#modal-editar').modal('show');
@@ -326,13 +338,35 @@ $('#eliminar').click(function(){
     alert('Seleccione un registro');  
   }
 });
-   //datepicker
-
-$('#dp1').datepicker({
-  dateFormat: "yy-mm-dd"
-});
-$('#dp2').datepicker({
-  dateFormat: "yy-mm-dd"
-});    
-
+   //datepicker para editar el beneficiario
+$(function($){
+  
+    $.fn.datepicker.dates['es'] = {
+        days: ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"],
+        daysShort: ["Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "Sáb", "Dom"],
+        daysMin: ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa", "Do"],
+        months: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
+        monthsShort: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"],
+        today: "Hoy"
+    };
+    $('.datepicker').datepicker({
+      language: "es",
+      format: "yyyy-mm-dd",
+      weekStart:0,
+      todayHighlight: true,
+      todayBtn:true,
+      orientation: "bottom right",
+     
+    });
+    ///datepicker para agregar un nuevo beneficiario
+    $('#dp2').datepicker({
+      format: "yyyy-mm-dd",
+      language: "es",
+      weekStart: 0,
+      todayHighlight: true,
+      todayBtn: true,
+      //orientation: "bottom right",
+      
+    });
+})
 </script>
