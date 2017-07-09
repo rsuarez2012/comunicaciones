@@ -59,12 +59,12 @@ class TitularesController extends AppController {
 		if ($this->request->is('post')) {
 			$this->Titulare->create();
 			if ($this->Titulare->save($this->request->data)) {
-				$this->Session->setFlash(__('The titulare has been saved.'));
+				$this->Session->setFlash('Titular almacenado con exito.', 'msg_success');
 				//$this->Session->setFlash('Alumno almacenado con éxito!', 'default', array(), 'flash_good');
 				//$this->Session->setFlash('Docente almacenado con éxito!', 'flash_bien');
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The titulare could not be saved. Please, try again.'));
+				$this->Session->setFlash('El titular no se pudo almacenar. Por favor, intente de nuevo.','msg_error');
 			}
 		}
 	}
@@ -84,10 +84,10 @@ class TitularesController extends AppController {
 			$this->Titulare->id = $id;
 
 			if ($this->Titulare->save($this->request->data)) {
-				$this->Session->setFlash(__('The titulare has been saved.'));
-				return $this->redirect(array('action' => 'index'));
+				$this->Session->setFlash('Titular editado con exito.', 'msg_success');
+				return $this->redirect(array('action' => 'view', $this->data['Titulare']['id']));
 			} else {
-				$this->Session->setFlash(__('The titulare could not be saved. Please, try again.'));
+				$this->Session->setFlash('El Titular no pudo ser editado. Por favor, intente de nuevo.','msg_error');
 			}
 		} else {
 			$options = array('conditions' => array('Titulare.' . $this->Titulare->primaryKey => $id));
@@ -109,7 +109,7 @@ class TitularesController extends AppController {
 		}
 		$this->request->allowMethod('post', 'delete');
 		if ($this->Titulare->delete()) {
-			$this->Session->setFlash(__('The titulare has been deleted.'));
+			$this->Session->setFlash('Titular fue eliminado.','msg_success');
 			//Primera opcion 
 			//$this->Session->setFlash('Something bad.', 'default', array(), 'bad');
 			//segunda opcion creando un mensaje en app/View/Elements/flash_custom.ctp
@@ -118,7 +118,7 @@ class TitularesController extends AppController {
 			//$this->Session->setFlash(__('My message.'), 'flash_notification');
 
 		} else {
-			$this->Session->setFlash(__('The titulare could not be deleted. Please, try again.'));
+			$this->Session->setFlash('Titular no pudo ser eliminado. Por favor, Intente de nuevo.','msg_error');
 		}
 		return $this->redirect(array('action' => 'index'));
 	}

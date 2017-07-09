@@ -42,10 +42,11 @@
 						</div>
 						<div class="form-group">
 							<label>Fecha Nacimiento</label>
-							<?php echo $this->Form->input('fecha_nacimiento', array('label'=>false, 'dateFormat'=>'DMY', 'minYear' => date('Y')-100, 'maxYear'=>date('Y')-18), array('label'=>false));?>
+							<?php //echo $this->Form->input('fecha_nacimiento', array('label'=>false, 'dateFormat'=>'DMY', 'minYear' => date('Y')-100, 'maxYear'=>date('Y')-18), array('label'=>false));?>
+							<?php echo $this->Form->date('fecha_nacimiento', array('label'=>false,'class'=>'form-control nacio','type'=>'text','autocomplete'=>'off'));?>
 						</div>
 						<div class="form-group">
-							<?php echo $this->Form->input('edad', array('class'=>'form-control'));?>
+							<?php echo $this->Form->input('edad', array('class'=>'form-control', 'id'=>'fecha'));?>
 						</div>
 						<div class="form-group">
 							<label>Lugar de Nacimiento</label>
@@ -71,7 +72,8 @@
 						</div>
 						<div class="form-group">
 							<label>Fecha de Ingreso</label>
-							<?php echo $this->Form->input('fecha_ingreso', array('label'=>false, 'dateFormat'=>'DMY', 'minYear' => date('Y')-60, 'maxYear'=>date('Y')-0), array('label'=>false));?>
+							<?php //echo $this->Form->input('fecha_ingreso', array('label'=>false, 'dateFormat'=>'DMY', 'minYear' => date('Y')-60, 'maxYear'=>date('Y')-0), array('label'=>false));?>
+							<?php echo $this->Form->date('fecha_ingreso', array('label'=>false,'class'=>'form-control','type'=>'text', 'id'=>'ingreso','autocomplete'=>'off'));?>
 						</div>
 
 						<?php echo $this->Form->button('Guardar', array('class'=>'btn btn-success'));?>
@@ -80,3 +82,54 @@
 				</div>
 		</div>
 	</div>
+<script type="text/javascript">
+	   //datepicker para editar el beneficiario
+$(function($){
+  
+    $.fn.datepicker.dates['es'] = {
+        days: ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"],
+        daysShort: ["Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "Sáb", "Dom"],
+        daysMin: ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa", "Do"],
+        months: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
+        monthsShort: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"],
+        today: "Hoy"
+    };
+    $('.nacio').datepicker({
+      language: "es",
+      format: "yyyy-mm-dd",
+      weekStart:0,
+      todayHighlight: true,
+      todayBtn:true,
+      orientation: "bottom right",
+     
+    });
+    ///datepicker para agregar un nuevo beneficiario
+    $('#ingreso').datepicker({
+      format: "yyyy-mm-dd",
+      language: "es",
+      weekStart: 0,
+      todayHighlight: true,
+      todayBtn: true,
+      //orientation: "bottom right",
+      
+    });
+});
+$('#fecha').click(function() {
+	// body...
+	// 
+	var f = $('.nacio').val();
+	var hoy = new Date();
+    var cumpleanos = new Date(f);
+    var edad = hoy.getFullYear() - cumpleanos.getFullYear();
+    var m = hoy.getMonth() - cumpleanos.getMonth();
+
+    if (m < 0 || (m === 0 && hoy.getDate() < cumpleanos.getDate())) {
+        edad--;
+    }
+
+     //alert(edad);
+     $('#fecha').val(edad);
+	//alert(f);
+	
+})
+</script>

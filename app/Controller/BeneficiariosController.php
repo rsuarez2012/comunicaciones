@@ -106,9 +106,9 @@ public function return_data(){
 		}
 		if ($this->request->is(array('post', 'put'))) {
 			if ($this->Beneficiario->save($this->request->data)) {
-				$this->Session->setFlash('The beneficiario has been saved.','msg_success');				return $this->redirect(array('controller'=>'titulares', 'action' => 'view', $this->data['Beneficiario']['titulare_id']));
+				$this->Session->setFlash('Beneficiario editado con exito.','msg_success');				return $this->redirect(array('controller'=>'titulares', 'action' => 'view', $this->data['Beneficiario']['titulare_id']));
 			} else {
-				$this->Session->setFlash(__('The beneficiario could not be saved. Please, try again.'));
+				$this->Session->setFlash('Beneficiario no se pudo editar. Por favor, intente de nuevo.', 'msg_error');
 				
 				return $this->redirect(array('controller'=>'titulares', 'action'=>'view', $this->data['Beneficiario']['titulare_id']));
 			}

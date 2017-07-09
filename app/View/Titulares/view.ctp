@@ -24,9 +24,6 @@
   <div class="tab-content">
 
   	<table class="table">
-  	
-  	
-  		
   		<tr>
   			<th><?php echo __('Fecha Nacimiento'); ?></th> 
   			<th><?php echo __('Lugar Nacimiento'); ?></th>
@@ -36,15 +33,13 @@
   			<td><?php echo date("d-m-Y", strtotime(h($titulare['Titulare']['fecha_nacimiento']))); ?></td>
   			<td><?php echo h($titulare['Titulare']['lugar_nacimiento']); ?></td>
 
-  		</tr>
-  		
+  		</tr>  		
   		<tr>
   			<th><?php echo __('Edad'); ?></th>
   			<th><?php echo __('Estado Civil'); ?></th>
   		</tr>
   		<tr>
   			<td><?php echo h($titulare['Titulare']['edad']); ?></td>
-
   			<td><?php echo h($titulare['Titulare']['estado_civil']); ?></td>
   		</tr>
   		<tr>
@@ -53,22 +48,17 @@
   		</tr>
   		<tr>
   			<td><?php echo h($titulare['Titulare']['direccion']); ?></td>
-
   			<td><?php echo h($titulare['Titulare']['telefono']); ?></td>
-
   		</tr>
   		<tr>
-			<th><?php echo __('Tipo Personal'); ?></th>
-			<th><?php echo __('Fecha Ingreso'); ?></th>
+  			<th><?php echo __('Tipo Personal'); ?></th>
+  			<th><?php echo __('Fecha Ingreso'); ?></th>
   		</tr>
   		<tr>
   			<td><?php echo h($titulare['Titulare']['tipo_personal']); ?></td>
   			<td><?php echo date("d-m-Y", strtotime(h($titulare['Titulare']['fecha_ingreso']))); ?></td>
-
-  		</tr>
-  		
-
-  	</table>
+      </tr>
+    </table>
 	<hr />
 		<div class="panel panel-warning">
                         <div class="panel-heading">
