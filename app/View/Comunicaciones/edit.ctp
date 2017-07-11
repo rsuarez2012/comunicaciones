@@ -29,7 +29,7 @@
 														</div>
 														<div class="form-group">
 															<label>Fecha</label>
-															<?php echo $this->Form->input('fecha', array('fecha', 'dateFormat'=>'DMY', 'label'=>false, 'class'=>'form-control'));?>
+															<?php echo $this->Form->date('fecha', array('fecha', 'label'=>false, 'class'=>'form-control', 'id'=>'fecha'));?>
 														</div>
 														<div class="form-group">
 															<label>Cuerpo</label>
@@ -61,48 +61,25 @@
                                 
         <!--</div>-->
     </div>
-
-
-
-
-
-
-
-
-<!--<div class="comunicaciones form">
-<?php //echo $this->Form->create('Comunicacione'); ?>
-	<fieldset>
-		<legend><?php// echo __('Editar Comunicacion '); ?></legend>
-	<?php
-		// $this->Form->input('id');?>
-
-		<label><b>Numero Comunicacion</b></label>
-		<?php //echo $this->Form->input('numero_comuni', array('label'=>false));?>
-
-		<?php
-		///echo $this->Form->input('dependencia_id');
-		//echo $this->Form->input('directivo_id', array('type'=>'hidden'));
-		//echo $this->Form->input('asunto');
-		//echo $this->Form->input('fecha', array('dateFormat'=>'DMY'));
-		//echo $this->Form->input('cuerpo');
-		
-		//echo $this->Form->input('copia_a');
-		//echo $this->Form->input('Dependencia.Dependencia', array('multiple'=>true, 'label'=>false));
-
-	?>
-	<label>Enviar Copia A:</label>
-	<?php //echo $this->Form->input('Dependencia.Dependencia', array('multiple'=>true, 'label'=>false));?>
-	<label><b>Anexo</b></label>
-			<?php// echo $this->Form->checkbox('anexo', array('label'=>'false'));?>
-	</fieldset>
-<?php //echo $this->Form->end(__('Editar')); ?>
-</div>-->
-<!--<div class="actions">
-	<h3><?php //echo __('Acciones'); ?></h3>
-	<ul>
-
-		<li><?php //echo $this->Form->postLink(__('Eliminar'), array('action' => 'delete', $this->Form->value('Comunicacione.id')), array(), __('Seguro desea Eliminar la Comunicacion #%s?', $this->Form->value('Comunicacione.numero_comuni'))); ?></li>
-		<li><?php //echo $this->Html->link(__('Comunicaciones'), array('action' => 'index')); ?></li>
-		
-	</ul>
-</div>-->
+<script type="text/javascript">
+ $(function($){
+  
+    $.fn.datepicker.dates['es'] = {
+        days: ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"],
+        daysShort: ["Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "Sáb", "Dom"],
+        daysMin: ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa", "Do"],
+        months: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
+        monthsShort: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"],
+        today: "Hoy"
+    };
+    $('#fecha').datepicker({
+      language: "es",
+      format: "yyyy-mm-dd",
+      weekStart:0,
+      todayHighlight: true,
+      todayBtn:true,
+      orientation: "bottom right",
+     
+    });
+});
+ </script>

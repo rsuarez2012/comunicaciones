@@ -96,19 +96,22 @@ class ComunicacionesController extends AppController {
  * @return void
  */
 	public function add() {
-		$ult_comunicacion = $this->Comunicacione->find('first');
-		//$this->set('numero_comunicacion', $ult_comunicacion["Comunicacione"]["id"]);
 		if ($this->request->is('post')) {
+			$numero_comuni = $this->Comunicacione->find('all', ['fields'=>['MAX(Comunicacione.id) as id']]);
+			$numero_comuni = (int) $numero_comuni[0][0]['id'];
+			$numero_comuni = str_pad($numero_comuni +1,2,'0',STR_PAD_LEFT);
+			//pr($numero_comuni);
 			$this->Comunicacione->create();
+			$this->request->data['Comunicacione']['numero_comuni']=$numero_comuni;
+
 			if ($this->Comunicacione->save($this->request->data)) {
 
-				$this->Session->setFlash(__('La Comunicacion a sido Guardada.'));
+				$this->Session->setFlash('La Comunicacion a sido Guardada.','msg_success');
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('La comunicacion no se pudo Guardar. Por Favor, Intente de Nuevo.'));
+				$this->Session->setFlash('La comunicacion no se pudo Guardar. Por Favor, Intente de Nuevo.','msg_error');
 			}
 		}
-
 		$dependencias = $this->Comunicacione->Dependencia->find('list');
 		$directivos = $this->Comunicacione->Directivo->find('list');
 		$this->set(compact('dependencias', 'directivos'));
@@ -129,12 +132,13 @@ class ComunicacionesController extends AppController {
 		if ($this->request->is(array('post', 'put'))) {
 			$this->Comunicacione->id = $id;
 			if ($this->Comunicacione->save($this->request->data)) {
-				$this->Session->setFlash(__('La Comunicacion a sido Guardada.'));
-				return $this->redirect(array('action' => 'index'));
+				$this->Session->setFlash('La Comunicacion a sido Editada.','msg_success');
+				//return $this->redirect(array('controller'=>'comunicaciones', 'action' => 'view', $this->data['Comunicacione']['id']));
+				return $this->redirect(array( 'controller'=>'comunicaciones','action' => 'view', $this->Comunicacione->id = $id));
 			} else {
-				$this->Session->setFlash(__('La comunicacion no se pudo Guardar. Por Favor, Intente de Nuevo.'),array('div'=>array('class'=>'danger')));
+				$this->Session->setFlash('La comunicacion no se pudo Editar. Por Favor, Intente de Nuevo.','msg_error');
 			}
-			debug($this->Comunicacione->validationErrors);
+			//debug($this->Comunicacione->validationErrors);
 		} else {
 			$options = array('conditions' => array('Comunicacione.' . $this->Comunicacione->primaryKey => $id));
 			$this->request->data = $this->Comunicacione->find('first', $options);
@@ -158,9 +162,9 @@ class ComunicacionesController extends AppController {
 		}
 		$this->request->allowMethod('post', 'delete');
 		if ($this->Comunicacione->delete()) {
-			$this->Session->setFlash(__('La Comunicacion a sido Eliminada.'));
+			$this->Session->setFlash('La Comunicacion a sido Eliminada.', 'msg_success');
 		} else {
-			$this->Session->setFlash(__('La comunicacion no se pudo Eliminar. Por Favor, Intente de Nuevo.'));
+			$this->Session->setFlash('La comunicacion no se pudo Eliminar. Por Favor, Intente de Nuevo.','msg_error');
 		}
 		return $this->redirect(array('action' => 'index'));
 	}

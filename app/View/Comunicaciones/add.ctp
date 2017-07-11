@@ -13,10 +13,10 @@
 					<div class="col-lg-6">
 
 						<?php echo $this->Form->create('Comunicacione'); ?>
-						<div class="form-group">
-							<label>Numero Comunicacion</label>
-							<?php echo $this->Form->input('numero_comuni', array('numero_comuni', 'label'=>false, 'class'=>'form-control'));?>
-						</div>
+						<!--<div class="form-group">
+							<label>Numero Comunicacion</label>-->
+							<?php echo $this->Form->input('numero_comuni', array('numero_comuni', 'label'=>false, 'class'=>'form-control','type'=>'hidden'));?>
+						<!--</div>-->
 						<div class="form-group">
 							<label>Dependencia</label>
 							<?php echo $this->Form->input('dependencia_id', array('dependencia_id', 'label'=>false, 'class'=>'form-control'));?>
@@ -27,7 +27,7 @@
 						</div>
 						<div class="form-group">
 							<label>Fecha</label>
-							<?php echo $this->Form->input('fecha', array('fecha', 'dateFormat'=>'DMY', 'label'=>false, 'class'=>'form-control'));?>
+							<?php echo $this->Form->date('fecha', array('fecha', 'label'=>false, 'class'=>'form-control', 'id'=>'fecha', 'autocomplete'=>'off'));?>
 						</div>
 						<div class="form-group">
 							<label>Cuerpo</label>
@@ -53,15 +53,32 @@
 				</div>
 		</div>
 	</div>
- 
-<div class="actions">
-	<h3><?php echo __('Acciones'); ?></h3>
-	<ul>
+ <script type="text/javascript">
+ $(function($){
+  
+    $.fn.datepicker.dates['es'] = {
+        days: ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"],
+        daysShort: ["Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "Sáb", "Dom"],
+        daysMin: ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa", "Do"],
+        months: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
+        monthsShort: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"],
+        today: "Hoy"
+    };
+    $('#fecha').datepicker({
+      language: "es",
+      format: "yyyy-mm-dd",
+      weekStart:0,
+      todayHighlight: true,
+      todayBtn:true,
+      orientation: "bottom right",
+     
+    });
+});
+$(function($){
+	//var da = "<?php //echo ['comunicaciones']['id']; ?>";
+//var $titulare_id = '<?php //echo $titulare['Titulare']['id']?>';
+	//alert(da);
 
-		<li><?php echo $this->Html->link(__('Comunicaciones'), array('action' => 'index')); ?></li>
-		<li><?php echo $this->Html->link(__('Dependencias'), array('controller' => 'dependencias', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('Nueva Dependencia'), array('controller' => 'dependencias', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('Directivos'), array('controller' => 'directivos', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('Nuevo Directivo'), array('controller' => 'directivos', 'action' => 'add')); ?> </li>
-	</ul>
-</div>
+});
+
+ </script>
