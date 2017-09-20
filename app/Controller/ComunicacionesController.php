@@ -97,10 +97,11 @@ class ComunicacionesController extends AppController {
  */
 	public function add() {
 		if ($this->request->is('post')) {
-			$numero_comuni = $this->Comunicacione->find('all', ['fields'=>['MAX(Comunicacione.id) as id']]);
+			//$numero_comuni = $this->Comunicacione->find('all', ['fields'=>['MAX(Comunicacione.id) as id']]);
+			$numero_comuni = $this->Comunicacione->find('all', ['fields'=>['MAX(Comunicacione.numero_comuni) as id']]);
 			$numero_comuni = (int) $numero_comuni[0][0]['id'];
 			$numero_comuni = str_pad($numero_comuni +1,2,'0',STR_PAD_LEFT);
-			//pr($numero_comuni);
+			pr($numero_comuni);
 			$this->Comunicacione->create();
 			$this->request->data['Comunicacione']['numero_comuni']=$numero_comuni;
 
