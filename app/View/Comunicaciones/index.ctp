@@ -35,7 +35,7 @@
 											<td>
 												<?php echo $this->Html->link(__('Ver'), array('action' => 'view', $comunicacione['Comunicacione']['id']), array('class' => 'btn btn-info btn-xs')); ?>
 											<?php echo $this->Html->link(__('Editar'), array('action' => 'edit', $comunicacione['Comunicacione']['id']), array('class' => 'btn btn-warning btn-xs')); ?>
-											<?php echo $this->Form->postLink(__('Eliminar'), array('action' => 'delete', $comunicacione['Comunicacione']['id']), array('class' => 'btn btn-danger btn-xs'), array(), __('Seguro desea Eliminar la Comunicacion #%s?', $comunicacione['Comunicacione']['numero_comuni'])); ?>
+											<?php //echo $this->Form->postLink(__('Eliminar'), array('action' => 'delete', $comunicacione['Comunicacione']['id']), array('class' => 'btn btn-danger btn-xs'), array(), __('Seguro desea Eliminar la Comunicacion #%s?', $comunicacione['Comunicacione']['numero_comuni'])); ?>
 											
 											</td>
 										</tr>

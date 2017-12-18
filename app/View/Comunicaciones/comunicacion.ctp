@@ -17,10 +17,11 @@ class MYTCPDF extends TCPDF {
  
  ob_clean();
  // create new PDF document
- $tcpdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, 
-       PDF_PAGE_FORMAT, true, 'UTF-8', false);
+ //$tcpdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, 
+  //     PDF_PAGE_FORMAT, true, 'UTF-8', false);
  
- //$tcpdf = new TCPDF('P','mm','LETTER',true,'UTF-8',false);
+//$tcpdf = new TCPDF('P','mm','LETTER',true,'UTF-8',false);
+$tcpdf = new TCPDF('P','mm','LEGAL',true,'UTF-8',false);
 $textfont = 'helvetica';
 $tcpdf->SetCreator(PDF_CREATOR);
 $tcpdf->SetAuthor("autor");
@@ -124,7 +125,7 @@ Estado Guarico</p></td></tr></table>
 
 
 <br>
-<p style="font-size:12px;">              Esperando su pronta respuesta, se se despide de usted orgulloso de ser Unergista.</p>
+<p style="font-size:12px;">              Esperando su pronta respuesta, se despide de usted orgulloso de ser Unergista.</p>
 
 <br>
 <br>

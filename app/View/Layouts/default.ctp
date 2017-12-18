@@ -27,6 +27,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 	</title>
 	<?= $this->Html->script('jquery-2.0.3.min');?>
 	<?= $this->Html->script('app/app.js');?>
+	<script src="//cdn.ckeditor.com/4.7.3/standard/ckeditor.js"></script>
 	
 	<?php
 		echo $this->Html->meta('icon');

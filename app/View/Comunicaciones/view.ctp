@@ -50,7 +50,7 @@
                                             
                                         </tr>
                                         <tr class="danger">
-                                            <td colspan="4"><?php echo h($comunicacione['Comunicacione']['cuerpo']); ?></td>
+                                            <td colspan="4"><?php echo h($comunicacione['Comunicacione']['cuerpo']); ?><?php //echo $this->Form->textarea('cuerpo',array('class'=>'ckeditor'))?></td>
                                             
                                         </tr>
                                         <tr>

@@ -31,8 +31,15 @@
 						</div>
 						<div class="form-group">
 							<label>Cuerpo</label>
-							<?php echo $this->Form->input('cuerpo', array('cuerpo', 'label'=>false, 'class'=>'form-control'));?>
+							<?php //echo $this->Form->input('cuerpo', array('cuerpo', 'label'=>false, 'class'=>'form-control'));?>
 						</div>
+
+
+	<?php echo $this->Form->textarea('cuerpo',array('class'=>'ckeditor'))?>
+
+
+
+
 						<div class="form-group">
 							<label>Director</label>
 							<?php echo $this->Form->input('directivo_id', array('directivo_id', 'label'=>false, 'class'=>'form-control'));?>
